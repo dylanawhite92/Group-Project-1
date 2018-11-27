@@ -49,15 +49,14 @@ $(document).ready(function () {
         var newImage = $("<img>").addClass("mr-3");
         newImage.attr("src", response.data[i], image.url);
         newImage.attr("alt", response.data[i], name.text)
-        newMediaObject.append(newImage);
-
+        
         var newDiv = $("<div>").addClass("media-body");
-        newMediaObject.append(newDiv);
-
+        newDiv.text("Text text text");
         var divHeader = $("<h5>").addClass("mt-0 mt-1");
-        newDiv.append(divHeader)
+        divHeader.text("Head Head Head");
+        newDiv.prepend(divHeader);
 
-        var divText = $("")
+        newMediaObject.append(newImage, newDiv,);
   }
         
 
