@@ -2,7 +2,8 @@
 const HEROKU_REDIRECT = "https://cors-anywhere.herokuapp.com/";
 const GITHUB_JOB_URL = "https://jobs.github.com/positions.json?search=";
 const KHAN_ACADEMY_URL = "https://www.khanacademy.org/api/v1/playlists/";
-const KHAN_ACADEMY_URL2 = "/videos"
+const KHAN_ACADEMY_URL2 = "/videos";
+const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=JCADVWXDZ2YXAS473ULD&q=";
 $(document).ready(function() {
 
   function ajaxGetRequest(urlToCall, queryParameter){
@@ -25,5 +26,5 @@ $(document).ready(function() {
   }
   let githubJobData = ajaxGetRequest(GITHUB_JOB_URL, 'javascript');
   let khanAcademyData = ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
-  
+  let eventData = ajaxGetRequest(EVENT_BRIGHT_URL, "tech");
 });
