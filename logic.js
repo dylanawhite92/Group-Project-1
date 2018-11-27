@@ -14,7 +14,7 @@ $(document).ready(function () {
   
     // Create a variable to reference the database
     var database = firebase.database();
-  
+
     // Gather input from submitted form
     $("#submit-btn").on("click", function () {
   
@@ -22,38 +22,44 @@ $(document).ready(function () {
         event.preventDefault();
   
         // Store input data
-        var firstName = $("#first-name-input").val().trim();
-        var lastName = $("#last-name-input").val().trim();
-        var email = $("#email-input").val().trim();
-        var phoneNumber = $("#phone-number-input").val().trim();
-        var comment = $("#comment-input").val().trim();
-  
+        var id = $("#id-input").val().trim();
+        var message = $("#message-input").val().trim();
+
         // Create a local object for holding the data
-        var newUser = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phoneNumber: phoneNumber,
-            comment: comment
-        };
+        var newMessage = {
+            id: id,
+            message: message
+        }
   
         // Push captured data to the database
-        database.ref().push(newUser);
+        database.ref("/message").push(newMessage);
   
         // Clear forms on submit
-        $("#first-name-input").val("");
-        $("#last-name-input").val("");
-        $("#email-input").val("");
-        $("#phone-number-input").val("");
-        $("#comment-input").val("");
+        $("#id-input").val("");
+        $("#message-input").val(""); 
     });
-  
-    // Snippet for appending a new row of data to the feed
-    // var newRow = $("<tr>").append(
-    //     $("<td>").text("#"),
-    //     $("<td>").text("#"),
-    //     $("<td>").text("#"),
-    //     $("<td>").text("#"),
-    //     $("<td>").text("#"),
-    // );
+
+    // when you submit a message, if id matches the id from the data point and grabs it then pushes to firebase
+    // then next time it pulls the message based on the id 
+
+  function addMediaObject() {
+        // Snippet for appending a new object to the feed
+        var newMediaObject = $("<li>").addClass("media")
+
+        var newImage = $("<img>").addClass("mr-3");
+        newImage.attr("src", response.data[i], image.url);
+        newImage.attr("alt", response.data[i], name.text)
+        newMediaObject.append(newImage);
+
+        var newDiv = $("<div>").addClass("media-body");
+        newMediaObject.append(newDiv);
+
+        var divHeader = $("<h5>").addClass("mt-0 mt-1");
+        newDiv.append(divHeader)
+
+        var divText = $("")
+  }
+        
+
+    $(".list-unstyled").append(newMediaObject)
   });
