@@ -12,13 +12,14 @@ firebase.initializeApp(config);
 // Create a variable to reference the database
 var database = firebase.database();
 
-function writeJobData(id, firstName, lastName, email, jobTitle, jobDescription) {
+function writeJobData(id, firstName, lastName, email, jobTitle, jobDescription, keywordsArray) {
   firebase.database().ref('/jobs/' + id).set({
    'firstName': firstName,
     'lastName': lastName,
     'email': email,
     'jobTitle': jobTitle, 
     'jobDescription': jobDescription,
+    'keywords': keywordsArray
   });
 }
 
