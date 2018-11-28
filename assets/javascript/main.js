@@ -6,6 +6,36 @@ const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=
 
 $(document).ready(function () {
 
+
+// The Checkbox's section
+
+  $("#checkJobs").change(function() {
+    if(this.checked) {
+        //Display api data
+        alert("Here is your API data");
+    } else {
+      //Do not display api data
+      alert("No api data for you");
+    }
+});
+  $("#checkEdu").change(function() {
+    if(this.checked) {
+      //Display api data
+    } else {
+    //Do not display api data
+    }
+});
+  $("#checkEvent").change(function() {
+    if(this.checked) {
+      //Display api data
+    } else {
+    //Do not display api data
+    }
+});
+
+// End of the Checkbox's section
+
+
   function ajaxGetRequest(urlToCall, queryParameter){
     $.ajax({
       type: 'GET',
