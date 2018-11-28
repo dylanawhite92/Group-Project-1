@@ -6,4 +6,7 @@ const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=
 
 $(document).ready(function () {
 
+    $("#submit-btn").on("click", function () {
+        
+    });
 });
