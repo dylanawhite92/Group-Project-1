@@ -60,9 +60,29 @@ $(document).ready(function () {
 
     // $("#submit-btn").on("click", ajaxGetRequest(GITHUB_JOB_URL, "javascript"));
     $("#submit-btn").on("click", function() {
+
+      var newMediaObject = $("<li>").addClass("media my-2")
+      var newImage = $("<img>").addClass("mr-3");
+      var newSpan = $("<span>").addClass("badge badge-pill");
+
       console.log("click");
       if ($("#job-check").is(":checked")) {
         ajaxGetRequest(GITHUB_JOB_URL, "javascript");
+
+        for (var i = 0; i < data.length; i++) {
+          newSpan.addClass("badge-primary");
+          newSpan.text("Job");
+          divHeader.prepend(newSpan);
+
+          newImage.attr("src", data[i].image_url + data[i].thumbnail_data.gcs_name)
+          newImage.attr("alt", data[i].description)
+
+          var newDiv = $("<div>").addClass("media-body");
+          newDiv.text(data[i].description.text);
+          var divHeader = $("<h5>").addClass("mt-0 mt-1");
+          divHeader.text(data[i].company + " , " + data[i].title + " , " + data[i].type + " , " + data[i].location);
+          newDiv.prepend(divHeader);
+      }
       }
       else if ($("#education-check").is(":checked")) {
         ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
@@ -70,92 +90,94 @@ $(document).ready(function () {
       else if ($("#event-check").is(":checked")) {
         ajaxGetRequest(EVENT_BRIGHT_URL, "tech");
       }
+
+      newMediaObject.append(newImage, newDiv);
+      $(".list-unstyled").append(newMediaObject)
     });
 
-    // $("#submit-btn").on("click", function () {
-    //   // Snippet for appending a new object to the feed
-    //   var newMediaObject = $("<li>").addClass("media my-2")
+    $("#submit-btn").on("click", function () {
+      // Snippet for appending a new object to the feed
+      var newMediaObject = $("<li>").addClass("media my-2")
 
-    //   var newImage = $("<img>").addClass("mr-3");
-    //   // // newImage.attr("src", "assets/images/150.png");
-    //   // // newImage.attr("alt", "response.data[i], name.text")
+      var newImage = $("<img>").addClass("mr-3");
+      // // newImage.attr("src", "assets/images/150.png");
+      // // newImage.attr("alt", "response.data[i], name.text")
       
-    //   // var newDiv = $("<div>").addClass("media-body");
-    //   // // newDiv.text("Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.");
-    //   // var divHeader = $("<h5>").addClass("mt-0 mt-1");
-    //   // divHeader.text(" List-based media object");
-    //   // newDiv.prepend(divHeader);
+      // var newDiv = $("<div>").addClass("media-body");
+      // // newDiv.text("Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.");
+      // var divHeader = $("<h5>").addClass("mt-0 mt-1");
+      // divHeader.text(" List-based media object");
+      // newDiv.prepend(divHeader);
 
-    //   // Badge based on what option is selected
-    //   var newSpan = $("<span>").addClass("badge badge-pill");
+      // Badge based on what option is selected
+      var newSpan = $("<span>").addClass("badge badge-pill");
 
-    //   if ($("#job-check").is(":checked")) {
-    //       // newSpan.addClass("badge-primary");
-    //       // newSpan.text("Job");
-    //       // divHeader.prepend(newSpan);
+      if ($("#job-check").is(":checked")) {
+          // newSpan.addClass("badge-primary");
+          // newSpan.text("Job");
+          // divHeader.prepend(newSpan);
 
-    //       // Need to edit github api data into loop
-    //       for (var i = 0; i < githubJobData.data.length; i++) {
-    //           newSpan.addClass("badge-primary");
-    //           newSpan.text("Job");
-    //           divHeader.prepend(newSpan);
+          // Need to edit github api data into loop
+          for (var i = 0; i < data.length; i++) {
+              newSpan.addClass("badge-primary");
+              newSpan.text("Job");
+              divHeader.prepend(newSpan);
 
-    //           // Try with and without the thumbnail data 
-    //           newImage.attr("src", githubJobData.data[i].image_url + githubJobData.data[i].thumbnail_data.gcs_name)
-    //           newImage.attr("alt", githubJobData.data[i].description)
+              newImage.attr("src", data[i].image_url + githubJobData.data[i].thumbnail_data.gcs_name)
+              newImage.attr("alt", githubJobData.data[i].description)
 
-    //           var newDiv = $("<div>").addClass("media-body");
-    //           newDiv.text(githubJobData.data[i].description.text);
-    //           var divHeader = $("<h5>").addClass("mt-0 mt-1");
-    //           divHeader.text(githubJobData.data[i].company + " , " + githubJobData.data[i].title + " , " + githubJobData.data[i].type + " , " + githubJobData.data[i].location);
-    //           newDiv.prepend(divHeader);
-    //       }
-    //     }
-    //     else if ($("#education-check").is(":checked")) {
-    //         // newSpan.addClass("badge-success");
-    //         // newSpan.text("Education");
-    //         // divHeader.prepend(newSpan);
+              var newDiv = $("<div>").addClass("media-body");
+              newDiv.text(githubJobData.data[i].description.text);
+              var divHeader = $("<h5>").addClass("mt-0 mt-1");
+              divHeader.text(githubJobData.data[i].company + " , " + githubJobData.data[i].title + " , " + githubJobData.data[i].type + " , " + githubJobData.data[i].location);
+              newDiv.prepend(divHeader);
+          }
+        }
+        else if ($("#education-check").is(":checked")) {
+            // newSpan.addClass("badge-success");
+            // newSpan.text("Education");
+            // divHeader.prepend(newSpan);
 
-    //         for (var i = 0; i < khanAcademyData.data.length; i++) {
-    //             newSpan.addClass("badge-primary");
-    //             newSpan.text("Job");
-    //             divHeader.prepend(newSpan);
+            for (var i = 0; i < khanAcademyData.data.length; i++) {
+                newSpan.addClass("badge-primary");
+                newSpan.text("Job");
+                divHeader.prepend(newSpan);
 
-    //             // Try with and without the thumbnail data 
-    //             newImage.attr("src", khanAcademyData.data[i].image_url + khanAcademyData.data[i].thumbnail_data.gcs_name)
-    //             newImage.attr("alt", khanAcademyData.data[i].description)
+                // Try with and without the thumbnail data 
+                newImage.attr("src", khanAcademyData.data[i].image_url + khanAcademyData.data[i].thumbnail_data.gcs_name)
+                newImage.attr("alt", khanAcademyData.data[i].description)
 
-    //             var newDiv = $("<div>").addClass("media-body");
-    //             newDiv.text(khanAcademyData.data[i].description);
-    //             var divHeader = $("<h5>").addClass("mt-0 mt-1");
-    //             divHeader.text(khanAcademyData.data[i].title);
-    //             newDiv.prepend(divHeader);
-    //         }
-    //     }
-    //     else if ($("#event-check").is(":checked")) {
-    //       // newSpan.addClass("badge-warning");
-    //       // newSpan.text("Event");
-    //       // divHeader.prepend(newSpan);
+                var newDiv = $("<div>").addClass("media-body");
+                newDiv.text(khanAcademyData.data[i].description);
+                var divHeader = $("<h5>").addClass("mt-0 mt-1");
+                divHeader.text(khanAcademyData.data[i].title);
+                newDiv.prepend(divHeader);
+            }
+        }
+        else if ($("#event-check").is(":checked")) {
+          // newSpan.addClass("badge-warning");
+          // newSpan.text("Event");
+          // divHeader.prepend(newSpan);
 
-    //       // Need to edit eventbrite api data into loop
-    //       for (var i = 0; i < eventData.data.length; i++) {
-    //           newSpan.addClass("badge-warning");
-    //           newSpan.text("Event");
-    //           divHeader.prepend(newSpan);
+          // Need to edit eventbrite api data into loop
+          for (var i = 0; i < eventData.data.length; i++) {
+              newSpan.addClass("badge-warning");
+              newSpan.text("Event");
+              divHeader.prepend(newSpan);
 
-    //           // Try with and without the thumbnail data 
-    //           newImage.attr("src", eventData.data[i].logo.url)
-    //           newImage.attr("alt", eventData.data[i].name.text)
+              // Try with and without the thumbnail data 
+              newImage.attr("src", eventData.data[i].logo.url)
+              newImage.attr("alt", eventData.data[i].name.text)
 
-    //           var newDiv = $("<div>").addClass("media-body");
-    //           newDiv.text(eventData.data[i].description.text);
-    //           var divHeader = $("<h5>").addClass("mt-0 mt-1");
-    //           divHeader.text(eventData.data[i].name.text);
-    //           newDiv.prepend(divHeader);
-    //       }
-    //     }
-    //     newMediaObject.append(newImage, newDiv);
+              var newDiv = $("<div>").addClass("media-body");
+              newDiv.text(eventData.data[i].description.text);
+              var divHeader = $("<h5>").addClass("mt-0 mt-1");
+              divHeader.text(eventData.data[i].name.text);
+              newDiv.prepend(divHeader);
+          }
+        }
+        newMediaObject.append(newImage, newDiv);
         
-    //     $(".list-unstyled").append(newMediaObject)
-    // });
+        $(".list-unstyled").append(newMediaObject)
+    });
 });
