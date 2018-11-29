@@ -20,18 +20,18 @@ function writeMessage(id, firstName, lastName, message) {
   });
 }
 
-$("#messageSubmit").on("click", function () {
-  event.preventDefault();
 
-  
-});
 
 // This is a test example
 // writeMessage(123, 'kaleb', 'test', 'This is my message to the poster of this job');
 var value = sessionStorage.getItem("id");
 $(document).ready(function(){
-  $(document).on('click', '#submitMessageButton', function(event){
+  $(document).on('click', '#messageSubmit', function(event){
     event.preventDefault();
     writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
+
+    $("#firstNameInput").val("");
+    $("#lastNameInput").val("");
+    $("#message").val("");
   });
 });
