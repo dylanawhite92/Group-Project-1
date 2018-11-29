@@ -27,7 +27,7 @@ function renderScreen(data) {
     newMediaObject.append(newSpan, newImage, newDiv, divHeader);
 
     if ($("#job-check").is(":checked")) {
-      newMediaObject.attr('data-id', data[i].id);
+      newSpan.attr('data-id', data[i].id);
       newSpan.addClass("badge-primary");
       newSpan.text("Job");
       divHeader.prepend(newSpan);
@@ -130,7 +130,7 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on('click', 'li', function(event){
+  $(document).on('click', '.badge', function(event){
     console.log($(this).data('id'));
     createSessionStorageData('id', $(this).data('id'),);
   });
@@ -139,4 +139,5 @@ $(document).ready(function () {
 function createSessionStorageData(key, value) {
   console.log(key, value);
   sessionStorage.setItem(key, value);
+  window.location.replace('/Users/KalebK/Desktop/bootcamp/Group-Project-1/assets/html/messageSubmit.html');
 }
