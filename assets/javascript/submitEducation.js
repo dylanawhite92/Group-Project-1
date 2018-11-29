@@ -25,13 +25,20 @@ $(document).ready(function() {
     });
   }
 
-  // writeJobData('kaleb', 'test', 'test@SpeechGrammarList.com', 'software Engineer', 'have to like dogs', ['frogs', 'dogs', 'code', 'tech', 'javaScript']);
-
-
   $(document).on("click", '#educationSubmit', function(event){
     event.preventDefault();
+
     let string = $('#educationKeywords').val();
     let arrayOfKeywords = string.split(',')
+
     writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $("#linkInput").val(), $("#educationDescription").val() ,arrayOfKeywords);
+
+    $("#firstNameInput").val("") 
+    $('#lastNameInput').val("");
+    $('#contactEmail').val("");
+    $('#exampleFormControlInput1').val("")
+    $('#linkInput').val("")
+    $("#educationDescription").val("");
+    $("#educationKeywords").val("");
   })
 });
