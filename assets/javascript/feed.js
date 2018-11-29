@@ -165,5 +165,5 @@ $(document).ready(function () {
 function createSessionStorageData(key, value) {
   console.log(key, value);
   sessionStorage.setItem(key, value);
-  window.location.replace('/Users/KalebK/Desktop/bootcamp/Group-Project-1/assets/html/messageSubmit.html');
+  window.location.replace('../html/messageSubmit.html');
 }
