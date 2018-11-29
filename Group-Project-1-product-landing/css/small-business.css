@@ -78,8 +78,15 @@ body {
     
     }
 
-    .logo {
+    .logo{
       float: left;
       height: 50px;
       width: 50px;
+    }
+
+    
+    .skyline{
+      height: 350px;
+      width: 700px;
+      padding-left: 50px
     }
