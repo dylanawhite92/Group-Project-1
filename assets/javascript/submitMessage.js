@@ -20,12 +20,20 @@ function writeMessage(id, firstName, lastName, message) {
   });
 }
 
-
-
 // This is a test example
 // writeMessage(123, 'kaleb', 'test', 'This is my message to the poster of this job');
 var value = sessionStorage.getItem("id");
 $(document).ready(function(){
+  $.ajax({
+    url: `https://group-project-1-cfef2.firebaseio.com/message.json`,
+    type: "GET",
+  }).then(function(data) {
+    console.log(value);
+    console.log(data[value]);
+    $('.chat-title').text(`${data[value].firstName} ${data[value].lastName}`);
+    $('#message-area').text(data[value].message);
+  });
+
   $(document).on('click', '#messageSubmit', function(event){
     event.preventDefault();
     writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
@@ -34,4 +42,5 @@ $(document).ready(function(){
     $("#lastNameInput").val("");
     $("#message").val("");
   });
+  
 });
