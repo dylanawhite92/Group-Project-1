@@ -23,7 +23,6 @@ function writeMessage(id, firstName, lastName, message) {
 $("#messageSubmit").on("click", function () {
   event.preventDefault();
 
-  
 });
 
 // This is a test example
