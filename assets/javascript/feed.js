@@ -12,6 +12,7 @@ function renderScreen(data) {
   }
 
   // $(".list-unstyled").append(newMediaObject)
+  $(".list-unstyled").empty();
   for (let i = 0; i < data.length; i++) {
     var newMediaObject = $("<li>").addClass("media my-2")
     var newSpan = $("<span>").addClass("badge badge-pill");
