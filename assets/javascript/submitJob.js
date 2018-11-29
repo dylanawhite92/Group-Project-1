@@ -14,12 +14,13 @@ $(document).ready(function() {
   // Create a variable to reference the database
   var database = firebase.database();
 
-  function writeJobData(firstName, lastName, email, jobTitle, jobDescription, keywordsArray) {
+  function writeJobData(firstName, lastName, email, jobTitle, location, jobDescription, keywordsArray) {
     firebase.database().ref('/jobs/').push({
     'firstName': firstName,
       'lastName': lastName,
       'email': email,
       'title': jobTitle, 
+      'location': location,
       'description': jobDescription,
       'keywords': keywordsArray
     });
@@ -30,8 +31,18 @@ $(document).ready(function() {
 
   $(document).on("click", '#job-submit', function(event){
     event.preventDefault();
+
     let string = $('#job-keywords').val();
     let arrayOfKeywords = string.split(',')
-    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#jobDescription').val(), arrayOfKeywords);
+
+    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $('#jobDescription').val(), arrayOfKeywords);
+
+    $("#firstNameInput").val("") 
+    $('#lastNameInput').val("");
+    $('#contactEmail').val("");
+    $('#exampleFormControlInput1').val("");
+    $('#exampleFormControlInput2').val("")
+    $("#jobDescription").val("");
+    $("#job-keywords").val("");
   })
 });
