@@ -21,10 +21,13 @@ function renderScreen(data) {
     var divHeader = $("<h5>").addClass("mt-0 mt-1");
     let textDisplay;
     let header;
+    
+    console.log(data[i]);
   
     newMediaObject.append(newSpan, newImage, newDiv, divHeader);
 
     if ($("#job-check").is(":checked")) {
+      newMediaObject.attr('data-id', data[i].id);
       newSpan.addClass("badge-primary");
       newSpan.text("Job");
       divHeader.prepend(newSpan);
@@ -68,7 +71,8 @@ $(document).ready(function () {
       let newArray = [...data];
       // prevents from grabbing properties from prototype
       for (var key in dataObject) {
-        console.log(key);
+        // gives each datapoint in firebase an id
+        dataObject[key].id = key;
         if (dataObject.hasOwnProperty(key)) {
             newArray.push(dataObject[key]);
         }
@@ -125,4 +129,14 @@ $(document).ready(function () {
       ajaxGetRequest(EVENT_BRIGHT_URL, "tech");
     }
   });
+
+  $(document).on('click', 'li', function(event){
+    console.log($(this).data('id'));
+    createSessionStorageData('id', $(this).data('id'),);
+  });
 });
+
+function createSessionStorageData(key, value) {
+  console.log(key, value);
+  sessionStorage.setItem(key, value);
+}
