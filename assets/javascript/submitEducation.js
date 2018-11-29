@@ -19,7 +19,7 @@ $(document).ready(function() {
       'lastName': lastName,
       'email': email,
       'title': title, 
-      'link': link,
+      'url': link,
       'description': jobDescription,
       'keywords': keywordsArray
     });
