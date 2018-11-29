@@ -3,6 +3,7 @@ const GITHUB_JOB_URL = "https://jobs.github.com/positions.json?search=";
 const KHAN_ACADEMY_URL = "https://www.khanacademy.org/api/v1/playlists/";
 const KHAN_ACADEMY_URL2 = "/videos";
 const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=JCADVWXDZ2YXAS473ULD&q=";
+const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
 function renderScreen(data) {
   console.log(data);
@@ -33,6 +34,7 @@ function renderScreen(data) {
       newSpan.text("Education");
       divHeader.prepend(newSpan);
       textDisplay = `<a href="${data[i].url}">${data[i].url}</a>`
+      console.log(data[i].url);
       header = data[i].description;
     } else if ($("#event-check").is(":checked")) {
       newSpan.addClass("badge-warning");
@@ -42,7 +44,6 @@ function renderScreen(data) {
       header = data[i].name.text;
     }
 
-    // newDiv.text("Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.");
     newDiv.html(textDisplay);
       var divHeader = $("<h5>").addClass("mt-0 mt-1");
       divHeader.text(header);
@@ -55,36 +56,71 @@ function renderScreen(data) {
 
 $(document).ready(function () {
 
-  function ajaxGetRequest(urlToCall, queryParameter){
+  function ajaxGetRequest(urlToCall, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
       url: (`${HEROKU_REDIRECT}${urlToCall}${queryParameter}`),
     }).then(function(data) {
       // console.log(data);
       // return data;
-      renderScreen(data);
+      console.log(dataObject);
+      let newArray = [...data];
+      // prevents from grabbing properties from prototype
+      for (var key in dataObject) {
+        console.log(key);
+        if (dataObject.hasOwnProperty(key)) {
+            newArray.push(dataObject[key]);
+        }
+    }
+      renderScreen(newArray);
     });
   }
-  function ajaxGetRequestKHAN(urlToCall, url_2nd_half, queryParameter){
+  function ajaxGetRequestKHAN(urlToCall, url_2nd_half, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
       url: (`${urlToCall}${queryParameter}${url_2nd_half}`),
     }).then(function(data) {
-      // console.log(data);
-      // return data;
-      renderScreen(data);
+      // renderScreen(data);
+      console.log(dataObject);
+      let newArray = [...data];
+      // prevents from grabbing properties from prototype
+      for (var key in dataObject) {
+        console.log(key);
+        if (dataObject.hasOwnProperty(key)) {
+          newArray.push(dataObject[key]);
+        }
+      }
+      renderScreen(newArray);
     });
   }
 
   $("#submit-btn").on("click", function() {
     console.log("click");
     if ($("#job-check").is(":checked")) {
-      ajaxGetRequest(GITHUB_JOB_URL, "javascript");
+      // grab firebase job data
+      $.ajax({
+        url: 'https://group-project-1-cfef2.firebaseio.com/jobs.json',
+        type: "GET",
+      }).then(function(data) {
+        console.log(data);
+        // request github data
+        ajaxGetRequest(GITHUB_JOB_URL, "javascript", data);
+      });
     }
     else if ($("#education-check").is(":checked")) {
-      ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
+      // grab firebase education data
+      $.ajax({
+        url: 'https://group-project-1-cfef2.firebaseio.com/education.json',
+        type: "GET",
+      }).then(function(data) {
+        // request khan academy data
+        console.log(data);
+        ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents", data);
+      });
+      // ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
     }
     else if ($("#event-check").is(":checked")) {
+      // request event bright data
       ajaxGetRequest(EVENT_BRIGHT_URL, "tech");
     }
   });

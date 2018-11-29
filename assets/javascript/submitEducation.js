@@ -13,12 +13,13 @@ $(document).ready(function() {
   // Create a variable to reference the database
   var database = firebase.database();
 
-  function writeJobData(firstName, lastName, email, jobTitle, jobDescription, keywordsArray) {
-    firebase.database().ref('/jobs/').push({
-    'firstName': firstName,
+  function writeJobData(firstName, lastName, email, title, link, jobDescription, keywordsArray) {
+    firebase.database().ref('/education/').push({
+      'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      'title': jobTitle, 
+      'title': title, 
+      'url': link,
       'description': jobDescription,
       'keywords': keywordsArray
     });
@@ -31,6 +32,6 @@ $(document).ready(function() {
     event.preventDefault();
     let string = $('#job-keywords').val();
     let arrayOfKeywords = string.split(',')
-    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#jobDescription').val(), arrayOfKeywords);
+    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $("#linkInput").val(), $("#educationDescription").val() ,arrayOfKeywords);
   })
 });

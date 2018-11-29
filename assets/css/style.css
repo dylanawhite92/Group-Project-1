@@ -1,0 +1,15 @@
+ul {
+  max-width: 100%;
+  margin-bottom: 60px;
+}
+
+ul > * {
+  max-width: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
