@@ -8,11 +8,11 @@
   <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-  <script src="../javascript/submitEducation.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
+  <script src="../javascript/submitEvent.js"></script>
 </head>
 <body>
-  
+  <!-- LOCATION, address, city, state-->
   <div class="container-fluid">
     <form>
       <div class="form-group">
@@ -32,14 +32,18 @@
           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Code and Coffee">
       </div>
       <div class="form-group">
+          <label for="jobTitleInput">Location of Event</label>
+          <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="100 E Business St, Chicago, IL 60000">
+      </div>
+      <div class="form-group">
           <label for="jobDescription">Description</label>
-          <textarea class="form-control" id="educationDescription" rows="3"></textarea>  
+          <textarea class="form-control" id="eventDescription" rows="3"></textarea>  
       </div>
       <div class="form-group">
         <label for="job-keywords">Keywords (comma seperated words)</label>
-        <input type="text" class="form-control" id="job-keywords" placeholder="JavaScript, OOP, etc."> 
+        <input type="text" class="form-control" id="eventKeywords" placeholder="JavaScript, OOP, etc."> 
       </div>
-      <button type="submit" class="btn btn-primary" id="job-submit">Submit</button>
+      <button type="submit" class="btn btn-primary" id="eventSubmit">Submit</button>
     </form>
   </div>
 </body>
