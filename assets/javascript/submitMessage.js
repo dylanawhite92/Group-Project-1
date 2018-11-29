@@ -20,6 +20,12 @@ function writeMessage(id, firstName, lastName, message) {
   });
 }
 
+$("#messageSubmit").on("click", function () {
+  event.preventDefault();
+
+  
+});
+
 // This is a test example
 // writeMessage(123, 'kaleb', 'test', 'This is my message to the poster of this job');
 var value = sessionStorage.getItem("id");
