@@ -13,7 +13,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 function writeMessage(id, firstName, lastName, message) {
-  firebase.database().ref('/jobs/' + id + '/message').set({
+  firebase.database().ref('/message/' + id).set({
    'firstName': firstName,
     'lastName': lastName,
     'message': message,
@@ -28,3 +28,10 @@ $("#messageSubmit").on("click", function () {
 
 // This is a test example
 // writeMessage(123, 'kaleb', 'test', 'This is my message to the poster of this job');
+var value = sessionStorage.getItem("id");
+$(document).ready(function(){
+  $(document).on('click', '#submitMessageButton', function(event){
+    event.preventDefault();
+    writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
+  });
+});
