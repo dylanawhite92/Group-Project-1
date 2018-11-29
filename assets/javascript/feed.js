@@ -42,7 +42,6 @@ function renderScreen(data) {
       header = data[i].name.text;
     }
 
-    // newDiv.text("Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.");
     newDiv.html(textDisplay);
       var divHeader = $("<h5>").addClass("mt-0 mt-1");
       divHeader.text(header);
@@ -70,8 +69,6 @@ $(document).ready(function () {
       type: 'GET',
       url: (`${urlToCall}${queryParameter}${url_2nd_half}`),
     }).then(function(data) {
-      // console.log(data);
-      // return data;
       renderScreen(data);
     });
   }
