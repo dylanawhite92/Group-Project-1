@@ -3,6 +3,7 @@ const GITHUB_JOB_URL = "https://jobs.github.com/positions.json?search=";
 const KHAN_ACADEMY_URL = "https://www.khanacademy.org/api/v1/playlists/";
 const KHAN_ACADEMY_URL2 = "/videos";
 const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=JCADVWXDZ2YXAS473ULD&q=";
+const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
 function renderScreen(data) {
   console.log(data);
@@ -54,14 +55,23 @@ function renderScreen(data) {
 
 $(document).ready(function () {
 
-  function ajaxGetRequest(urlToCall, queryParameter){
+  function ajaxGetRequest(urlToCall, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
       url: (`${HEROKU_REDIRECT}${urlToCall}${queryParameter}`),
     }).then(function(data) {
       // console.log(data);
       // return data;
-      renderScreen(data);
+      console.log(dataObject);
+      let newArray = [...data];
+      // prevents from grabbing properties from prototype
+      for (var key in dataObject) {
+        console.log(key);
+        if (dataObject.hasOwnProperty(key)) {
+            newArray.push(dataObject[key]);
+        }
+    }
+      renderScreen(newArray);
     });
   }
   function ajaxGetRequestKHAN(urlToCall, url_2nd_half, queryParameter){
@@ -76,9 +86,22 @@ $(document).ready(function () {
   $("#submit-btn").on("click", function() {
     console.log("click");
     if ($("#job-check").is(":checked")) {
-      ajaxGetRequest(GITHUB_JOB_URL, "javascript");
+      $.ajax({
+        url: 'https://group-project-1-cfef2.firebaseio.com/jobs.json',
+        type: "GET",
+      }).then(function(data) {
+        console.log(data);
+        ajaxGetRequest(GITHUB_JOB_URL, "javascript", data);
+      });
     }
     else if ($("#education-check").is(":checked")) {
+      $.ajax({
+        url: 'https://group-project-1-cfef2.firebaseio.com/education.json',
+        type: "GET",
+      }).then(function(data) {
+        console.log(data);
+        ajaxGetRequest(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
+      });
       ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
     }
     else if ($("#event-check").is(":checked")) {

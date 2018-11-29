@@ -18,8 +18,8 @@ $(document).ready(function() {
     'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      'jobTitle': jobTitle, 
-      'jobDescription': jobDescription,
+      'title': jobTitle, 
+      'description': jobDescription,
       'keywords': keywordsArray
     });
   }
