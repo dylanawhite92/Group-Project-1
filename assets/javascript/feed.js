@@ -99,6 +99,10 @@ $(document).ready(function () {
     });
   }
 
+  $(".badge").on("click", function () {
+    alert("i do something")
+  });
+
   $("#submit-btn").on("click", function() {
     console.log("click");
     if ($("#job-check").is(":checked")) {
