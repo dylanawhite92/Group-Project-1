@@ -1,0 +1,92 @@
+/*!
+ * Start Bootstrap - Small Business (https://startbootstrap.com/template-overviews/small-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-small-business/blob/master/LICENSE)
+ */
+
+body {
+  /* padding-top: 54px; */
+}
+
+@media (min-width: 992px) {
+  body {
+    /* padding-top: 56px; */
+  }
+}
+
+
+*{
+  margin:0;
+  padding: 0;
+  user-select: none;
+}
+
+.wrapper{
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.search-box{
+  width: 450px;
+  height: 100px;
+  position: relative;
+}
+
+.input{
+  position: absolute;
+  top: 20px;
+  right:50px;
+  box-sizing: border-box;
+  width: 00px;
+  height: 63px;
+  border: 3px solid rgb(0, 0, 0); 
+  border-radius:50px; 
+  padding: 0 20px;
+  outline: none;
+  font-size: 18px;
+  color:rgb(34, 107, 241);
+  transition: all 0.8s ease;
+  }
+
+  ::-webkit-input-placeholder{
+    color: #3865aa
+        }
+     
+    
+    .btn1 {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: #4171f3;
+      border-radius: 50%;
+      top: 10px;
+      right: 45px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 80px;
+      font-size: 20px;
+      color: rgb(0, 0, 0);
+      transition: all 0.8s ease;
+    
+    }
+    
+    
+    .input.active{
+      width: 625px;
+    
+    }
+
+    .logo{
+      float: left;
+      height: 50px;
+      width: 50px;
+    }
+
+    
+    .skyline{
+      height: 350px;
+      width: 700px;
+      padding-left: 50px
+    }
