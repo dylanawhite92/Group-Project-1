@@ -12,24 +12,24 @@ $(document).ready(function () {
   $("#checkJobs").change(function() {
     if(this.checked) {
         //Display api data
-        alert("Here is your API data");
-    } else {
+        $("jobsP").show();
+      } else {
       //Do not display api data
-      alert("No api data for you");
+        $("jobsP").hide();
     }
 });
   $("#checkEdu").change(function() {
     if(this.checked) {
-      //Display api data
+      $("eduP").show();
     } else {
-    //Do not display api data
+      $("eduP").hide();
     }
 });
   $("#checkEvent").change(function() {
     if(this.checked) {
-      //Display api data
+      $("eventP").show();
     } else {
-    //Do not display api data
+      $("eventP").hide();
     }
 });
 
