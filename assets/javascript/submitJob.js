@@ -1,3 +1,4 @@
+// DIFFERENTIATE BETWEEN OUR DATABASE AND API LISTING
 $(document).ready(function() {
   // Initialize Firebase
   var config = {
