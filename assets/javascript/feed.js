@@ -80,6 +80,28 @@ $(document).ready(function () {
       renderScreen(newArray);
     });
   }
+
+  function ajaxGetRequestNoRedirect(urlToCall, queryParameter, dataObject){
+    $.ajax({
+      type: 'GET',
+      url: (`${urlToCall}${queryParameter}`),
+    }).then(function(data) {
+      // console.log(data);
+      // return data;
+      console.log(data.events);
+      let newArray = [...data.events];
+      // prevents from grabbing properties from prototype
+      for (var key in dataObject) {
+        // gives each datapoint in firebase an id
+        dataObject[key].id = key;
+        if (dataObject.hasOwnProperty(key)) {
+            newArray.push(dataObject[key]);
+        }
+    }
+      renderScreen(newArray);
+    });
+  }
+
   function ajaxGetRequestKHAN(urlToCall, url_2nd_half, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
@@ -126,7 +148,7 @@ $(document).ready(function () {
     }
     else if ($("#event-check").is(":checked")) {
       // request event bright data
-      ajaxGetRequest(EVENT_BRIGHT_URL, "tech");
+      ajaxGetRequestNoRedirect(EVENT_BRIGHT_URL, "tech");
     }
   });
 
