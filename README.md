@@ -60,7 +60,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Loading wheel for when the API queries are loading.
 * Clear dead buttons
 * Improve UX for user clarity.
-* Form validation on all submissions.
+* Form validation on all submissions, including empty ones.
 * Chatbox, beautify formatting. Make dynamic, and not require refresh.
 * Collapsible divs in query listings, particularly jobs/events.
 * Change badges to say submit a message.
@@ -68,6 +68,9 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Check out Chicago's open data sets, see how they can be integrated.
 * Gain access to Google Maps API, include business locations in small div within listing.
 * Glassdoor API? Show rating of company, former employee reviews, etc.
+* Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
+* Overhaul styling.
+* Build animated landing page.
 
 ## How To Contribute
 
