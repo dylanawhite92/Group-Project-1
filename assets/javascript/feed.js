@@ -162,5 +162,5 @@ $(document).ready(function () {
 
 function createSessionStorageData(key, value) {
   sessionStorage.setItem(key, value);
-  window.location.replace('../html/messageSubmit.html');
+  window.location.replace('messageSubmit.html');
 }
