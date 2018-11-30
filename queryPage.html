@@ -66,29 +66,33 @@
             <p class="text-white m-0">Below we provide search results for jobs and events in the Chicago area, and educational materials to build upon your skills!</p>
           </div>
         </div>
+
+        <div class="card text-white bg-primary my-4 text-center" id = "toggle-container">
+            <div class="card-body">
         
         <!-- Radio Buttons -->
         <div class = "row">
+          <div class = "col-md-4"></div>
             <div class = "col-md-3">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active category" data-id="job">
+                    <label class="btn btn-dark active category" data-id="job">
                         <input type="radio" name="options" id="job-check" autocomplete="off" checked> Jobs
                     </label>
-                    <label class="btn btn-secondary category" data-id="education">
+                    <label class="btn btn-dark category" data-id="education">
                         <input type="radio" name="options" id="education-check" autocomplete="off"> Education
                     </label>
-                    <label class="btn btn-secondary category" data-id="event">
+                    <label class="btn btn-dark category" data-id="event">
                         <input type="radio" name="options" id="event-check" autocomplete="off"> Events
                     </label>
                 </div>
             </div>
 
-            <div class = "col-md-3"></div>
+            <div class = "col-md-4"></div>
 
-            <div class = "col-md-3">
-                <button class = "btn btn-secondary" id = "submit-btn">Make A Thing</button>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
         <!-- Media Object Feed -->
         <div class = "row">
@@ -96,7 +100,7 @@
             <ul class="list-unstyled" id="education-list"></ul>
             <ul class="list-unstyled" id="event-list"></ul>
         </div>
-    </div>
+  
 
     <!-- Footer -->
     <footer class="py-3 bg-primary">
