@@ -62,8 +62,8 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Improve UX for user clarity.
 * Form validation on all submissions, including empty ones.
 * Chatbox, beautify formatting. Make dynamic, and not require refresh.
-* Collapsible divs in query listings, particularly jobs/events.
-* Change badges to say submit a message.
+* Change badges in queryPage to be two badges, one to say submit a message and the other to collapse the divs in query listings for easier scrollability, particularly jobs/events.
+* Add more parameters to query listings for more descriptive listings, e.g. Employer Name, Location.
 * Check out Chicago's open data sets, see how they can be integrated.
 * Gain access to Google Maps API, include business locations in small div within listing.
 * Glassdoor API? Show rating of company, former employee reviews, etc.
