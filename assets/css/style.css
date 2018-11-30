@@ -13,3 +13,35 @@ footer {
   left: 0px;
   right: 0px;
 }
+
+.container-fluid {
+  margin-top: 20px;
+}
+
+.chat-title {
+ margin: 20px;
+}
+#card-container, #modal-container, #messageSubmit {
+  margin-bottom: 100px;
+}
+
+#dynamic-feed {
+  min-height: 200px;
+}
+
+#message-area {
+  min-height: 50px;
+}
+
+#first-name {
+  margin-top: 16px;
+}
+
+.form-group {
+  width: 50%;
+  margin: auto;
+}
+
+input, textarea {
+  margin-bottom: 16px;
+}
