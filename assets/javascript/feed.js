@@ -5,13 +5,21 @@ const KHAN_ACADEMY_URL2 = "/videos";
 const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=JCADVWXDZ2YXAS473ULD&q=";
 const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
-function renderScreen(data) {
+function renderScreen(data, type) {
   console.log(data);
   if (data.events != null) {
     data = data.events;
   }
 
-  // $(".list-unstyled").append(newMediaObject)
+  let listToChange;
+  if (type === 'job') {
+    listToChange = "#job-list";
+  } else if (type === 'event') {
+    listToChange = '#event-list';
+  } else {
+    listToChange = '#education-list';
+  }
+
   $(".list-unstyled").empty();
   for (let i = 0; i < data.length; i++) {
     var newMediaObject = $("<li>").addClass("media my-2")
@@ -21,26 +29,24 @@ function renderScreen(data) {
     var divHeader = $("<h5>").addClass("mt-0 mt-1");
     let textDisplay;
     let header;
-    
-    console.log(data[i]);
   
     newMediaObject.append(newSpan, newImage, newDiv, divHeader);
 
-    if ($("#job-check").is(":checked")) {
+    if (type === 'job') {
       newSpan.attr('data-id', data[i].id);
       newSpan.addClass("badge-primary");
       newSpan.text("Job");
       divHeader.prepend(newSpan);
       textDisplay = data[i].description;
       header = data[i].title;
-    } else if ($("#education-check").is(":checked")) {
+    } else if (type === 'education') {
       newSpan.addClass("badge-success");
       newSpan.text("Education");
       divHeader.prepend(newSpan);
       textDisplay = `<a href="${data[i].url}">${data[i].url}</a>`
       console.log(data[i].url);
       header = data[i].description;
-    } else if ($("#event-check").is(":checked")) {
+    } else {
       newSpan.addClass("badge-warning");
       newSpan.text("Event");
       divHeader.prepend(newSpan);
@@ -54,20 +60,20 @@ function renderScreen(data) {
       newDiv.prepend(divHeader);
 
     newMediaObject.append(newImage, newDiv);
-    $(".list-unstyled").append(newMediaObject)
+    $(listToChange).append(newMediaObject)
   }
 };
 
 $(document).ready(function () {
 
+  let jobData;
+  let eventData;
+  let educationData;
   function ajaxGetRequest(urlToCall, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
       url: (`${HEROKU_REDIRECT}${urlToCall}${queryParameter}`),
     }).then(function(data) {
-      // console.log(data);
-      // return data;
-      console.log(dataObject);
       let newArray = [...data];
       // prevents from grabbing properties from prototype
       for (var key in dataObject) {
@@ -77,18 +83,17 @@ $(document).ready(function () {
             newArray.push(dataObject[key]);
         }
     }
-      renderScreen(newArray);
+      jobData = newArray;
+      console.log(jobData);
     });
-  }
+  };
 
   function ajaxGetRequestNoRedirect(urlToCall, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
       url: (`${urlToCall}${queryParameter}`),
     }).then(function(data) {
-      // console.log(data);
       // return data;
-      console.log(data.events);
       let newArray = [...data.events];
       // prevents from grabbing properties from prototype
       for (var key in dataObject) {
@@ -98,7 +103,8 @@ $(document).ready(function () {
             newArray.push(dataObject[key]);
         }
     }
-      renderScreen(newArray);
+      eventData = newArray;
+      console.log(eventData);
     });
   }
 
@@ -107,63 +113,54 @@ $(document).ready(function () {
       type: 'GET',
       url: (`${urlToCall}${queryParameter}${url_2nd_half}`),
     }).then(function(data) {
-      // renderScreen(data);
-      console.log(dataObject);
       let newArray = [...data];
       // prevents from grabbing properties from prototype
       for (var key in dataObject) {
-        console.log(key);
         if (dataObject.hasOwnProperty(key)) {
           newArray.push(dataObject[key]);
         }
       }
-      renderScreen(newArray);
+      educationData = newArray;
+      console.log(educationData);
     });
   }
 
-  $(".badge").on("click", function () {
-    alert("i do something")
-  });
-
-  $("#submit-btn").on("click", function() {
-    console.log("click");
-    if ($("#job-check").is(":checked")) {
-      // grab firebase job data
-      $.ajax({
-        url: 'https://group-project-1-cfef2.firebaseio.com/jobs.json',
-        type: "GET",
-      }).then(function(data) {
-        console.log(data);
-        // request github data
-        ajaxGetRequest(GITHUB_JOB_URL, "javascript", data);
-      });
-    }
-    else if ($("#education-check").is(":checked")) {
-      // grab firebase education data
-      $.ajax({
-        url: 'https://group-project-1-cfef2.firebaseio.com/education.json',
-        type: "GET",
-      }).then(function(data) {
-        // request khan academy data
-        console.log(data);
-        ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents", data);
-      });
-      // ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents");
-    }
-    else if ($("#event-check").is(":checked")) {
-      // request event bright data
-      ajaxGetRequestNoRedirect(EVENT_BRIGHT_URL, "tech");
-    }
+  $(".category").on("click", function(event) {
+      if ($(this).attr('data-id') === "job") {
+        renderScreen(jobData, 'job');
+      }
+      else if ($(this).attr('data-id') === "education") {
+        renderScreen(educationData, 'education');
+      }
+      else if ($(this).attr('data-id') === "event") {
+         renderScreen(eventData, 'event');
+      }
   });
 
   $(document).on('click', '.badge', function(event){
-    console.log($(this).data('id'));
     createSessionStorageData('id', $(this).data('id'),);
   });
+
+  $.ajax({
+    url: 'https://group-project-1-cfef2.firebaseio.com/jobs.json',
+    type: "GET",
+  }).then(function(data) {
+    // request github data
+    ajaxGetRequest(GITHUB_JOB_URL, "javascript", data);
+  });
+
+  $.ajax({
+    url: 'https://group-project-1-cfef2.firebaseio.com/education.json',
+    type: "GET",
+  }).then(function(data) {
+    // request khan academy data
+    ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents", data);
+  });
+
+  ajaxGetRequestNoRedirect(EVENT_BRIGHT_URL, "tech");
 });
 
 function createSessionStorageData(key, value) {
-  console.log(key, value);
   sessionStorage.setItem(key, value);
   window.location.replace('../html/messageSubmit.html');
 }
