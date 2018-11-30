@@ -75,13 +75,13 @@
         <div class = "row">
             <div class = "col-md-3">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
+                    <label class="btn btn-secondary active category" data-id="job">
                         <input type="radio" name="options" id="job-check" autocomplete="off" checked> Jobs
                     </label>
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-secondary category" data-id="education">
                         <input type="radio" name="options" id="education-check" autocomplete="off"> Education
                     </label>
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-secondary category" data-id="event">
                         <input type="radio" name="options" id="event-check" autocomplete="off"> Events
                     </label>
                 </div>
@@ -96,7 +96,9 @@
 
         <!-- Media Object Feed -->
         <div class = "row">
-            <ul class="list-unstyled"></ul>
+            <ul class="list-unstyled" id="job-list"></ul>
+            <ul class="list-unstyled" id="education-list"></ul>
+            <ul class="list-unstyled" id="event-list"></ul>
         </div>
     </div>
 
