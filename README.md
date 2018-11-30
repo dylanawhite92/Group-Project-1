@@ -57,6 +57,17 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 ## Issues Related To Project
 
 * Search by keyword functionality not yet implemented.
+* Loading wheel for when the API queries are loading.
+* Clear dead buttons
+* Improve UX for user clarity.
+* Form validation on all submissions.
+* Chatbox, beautify formatting. Make dynamic, and not require refresh.
+* Collapsible divs in query listings, particularly jobs/events.
+* Change badges to say submit a message.
+* Remove footer, or make it not sticky and in the way at least.
+* Check out Chicago's open data sets, see how they can be integrated.
+* Gain access to Google Maps API, include business locations in small div within listing.
+* Glassdoor API? Show rating of company, former employee reviews, etc.
 
 ## How To Contribute
 
