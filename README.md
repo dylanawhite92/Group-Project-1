@@ -23,7 +23,7 @@
 Chicago Coding Resource Hub is focused on bringing the right job applicant to the right company. We provide resources for job applicants to access educational information, job related events, and current job opportunities. There is built-in functionality to allow direct communication between applicants and companies via our message board. Ultimately, our goal is to create an enviroment that offers the most efficent relationship-building platform between developers and employers.
 
 
-## Members
+## Contributing Members
 
 * [Kaleb Kougl](https://github.com/Kaleb-kougl)
 * [Nick K](https://github.com/NKGreeneyes)
