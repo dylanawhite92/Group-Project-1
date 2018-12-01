@@ -26,6 +26,8 @@ $(document).ready(function() {
   }
 
   // Grab data from submission form on click of submit button, clear forms after
+  // Validate forms to make sure they aren't empty/correct data types
+  // Validate email with mailboxlayer API
   $(document).on("click", '#educationSubmit', function(event){
     event.preventDefault();
 

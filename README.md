@@ -58,9 +58,14 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 ## Issues Related To Project
 
 * Search by keyword functionality not yet implemented.
+* Condense firebase to being called once for all pages.
 * Loading wheel for when the API queries are loading.
 * Improve UX for user clarity.
-* Form validation on all submissions, including empty ones.
+* Form validation on education submissions, including empty ones.
+* Form validation on event submissions, including empty ones.
+* Form validation on job submissions, including empty ones.
+* Form validation on message submissions, including empty ones.
+* Add mailboxlayer API to check for valid email addresses.
 * Chatbox, beautify formatting. Make dynamic, and not require refresh.
 * Change badges in queryPage to be two badges, one to say submit a message and the other to collapse the divs in query listings for easier scrollability, particularly jobs/events.
 * Add more parameters to query listings for more descriptive listings, e.g. Employer Name, Location.
@@ -70,7 +75,6 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Overhaul styling.
 * Build animated landing page.
-* Edit comments out of functions, format comments in a more pleasing way.
 
 ## How To Contribute
 
