@@ -7,11 +7,13 @@ const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
 function renderScreen(data, type) {
   console.log(data);
+
   if (data.events != null) {
     data = data.events;
   }
 
   let listToChange;
+
   if (type === 'job') {
     listToChange = "#job-list";
   } else if (type === 'event') {
@@ -39,14 +41,16 @@ function renderScreen(data, type) {
       divHeader.prepend(newSpan);
       textDisplay = data[i].description;
       header = data[i].title;
-    } else if (type === 'education') {
+    } 
+    else if (type === 'education') {
       newSpan.addClass("badge-success");
       newSpan.text("Education");
       divHeader.prepend(newSpan);
       textDisplay = `<a href="${data[i].url}">${data[i].url}</a>`
       console.log(data[i].url);
       header = data[i].description;
-    } else {
+    } 
+    else {
       newSpan.addClass("badge-warning");
       newSpan.text("Event");
       divHeader.prepend(newSpan);
@@ -69,15 +73,15 @@ $(document).ready(function () {
   let jobData;
   let eventData;
   let educationData;
+
+  // dataObject.hasOwnProperty prevents from grabbing properties from prototype 
   function ajaxGetRequest(urlToCall, queryParameter, dataObject){
     $.ajax({
       type: 'GET',
       url: (`${HEROKU_REDIRECT}${urlToCall}${queryParameter}`),
     }).then(function(data) {
       let newArray = [...data];
-      // prevents from grabbing properties from prototype
       for (var key in dataObject) {
-        // gives each datapoint in firebase an id
         dataObject[key].id = key;
         if (dataObject.hasOwnProperty(key)) {
             newArray.push(dataObject[key]);
@@ -93,11 +97,9 @@ $(document).ready(function () {
       type: 'GET',
       url: (`${urlToCall}${queryParameter}`),
     }).then(function(data) {
-      // return data;
       let newArray = [...data.events];
-      // prevents from grabbing properties from prototype
+
       for (var key in dataObject) {
-        // gives each datapoint in firebase an id
         dataObject[key].id = key;
         if (dataObject.hasOwnProperty(key)) {
             newArray.push(dataObject[key]);
@@ -114,7 +116,6 @@ $(document).ready(function () {
       url: (`${urlToCall}${queryParameter}${url_2nd_half}`),
     }).then(function(data) {
       let newArray = [...data];
-      // prevents from grabbing properties from prototype
       for (var key in dataObject) {
         if (dataObject.hasOwnProperty(key)) {
           newArray.push(dataObject[key]);
@@ -140,20 +141,19 @@ $(document).ready(function () {
   $(document).on('click', '.badge', function(event){
     createSessionStorageData('id', $(this).data('id'),);
   });
-
+  // Request Github Jobs Data
   $.ajax({
     url: 'https://group-project-1-cfef2.firebaseio.com/jobs.json',
     type: "GET",
   }).then(function(data) {
-    // request github data
     ajaxGetRequest(GITHUB_JOB_URL, "javascript", data);
   });
 
+  // Request Khan Academy Education Data 
   $.ajax({
     url: 'https://group-project-1-cfef2.firebaseio.com/education.json',
     type: "GET",
   }).then(function(data) {
-    // request khan academy data
     ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents", data);
   });
 

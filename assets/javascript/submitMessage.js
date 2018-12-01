@@ -21,6 +21,8 @@ function writeMessage(id, firstName, lastName, message) {
 }
 
 var value = sessionStorage.getItem("id");
+
+// Append messages stored in firebase to page
 $(document).ready(function(){
   $.ajax({
     url: `https://group-project-1-cfef2.firebaseio.com/message.json`,
@@ -50,6 +52,7 @@ $(document).ready(function(){
     }
   });
 
+  // Grab data from submission form on click of submit button, clear forms after
   $(document).on('click', '#messageSubmit', function(event){
     event.preventDefault();
     writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());

@@ -25,6 +25,7 @@ $(document).ready(function() {
     });
   }
 
+  // Grab data from submission form on click of submit button, clear forms after
   $(document).on("click", '#eventSubmit', function(event){
     event.preventDefault();
 

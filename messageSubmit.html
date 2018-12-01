@@ -47,11 +47,15 @@
       </form>
     </div>
   </nav>
+
+  <!-- Chatbox -->
   <div class="container-fluid">
     <div class="card w-50" id="message-board" style="margin: auto;">
       <h1 class="chat-title text-center">Chat with other users on CCRH!</h1>
       <div id="message-area">Messages go here.</div>
     </div>
+
+    <!-- Message Submission Form -->
     <form class="w-50" style="margin: auto;">
       <div class="form-group">
         <label for="firstNameInput">First Name</label>
@@ -65,7 +69,6 @@
           <label for="jobDescription">Message</label>
           <textarea class="form-control" id="message" rows="8" placeholder="Type something here..."></textarea>  
       </div>
-      <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" id = "messageSubmit">
           Submit
       </button>
