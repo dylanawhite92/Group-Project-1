@@ -3,18 +3,30 @@ body {
   background-size: cover;
 }
 
-#index-header {
+.index-header, label {
   color: white;
 }
 
 .bg-primary {
-  background-color: #adad85!important;
-  opacity: 0.8;
+  background: rgba(173, 173, 133, 0.4)!important;
+  /* background-color: #adad85!important;
+  opacity: 0.8; */
 }
 
-#divider {
-  padding-top: 15px;
+.btn-primary {
+  background: rgba(173, 173, 133, 0.8);
+  border-color: rgb(173, 173, 133);
 }
+
+.container{
+  border-radius: 10px;
+  background: rgba(173, 173, 133, 0.6);
+}
+
+/* #divider {
+  padding-top: 10px;
+  background: rgba(0, 0, 0, 0.7);
+} */
 
 ul {
   max-width: 100%;

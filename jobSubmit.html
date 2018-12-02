@@ -46,7 +46,7 @@
   </nav>
 
   <!-- Submission Form -->
-  <div class="container-fluid">
+  <div class="container">
     <form class="w-50" style="margin: auto;">
       <div class="form-group">
         <label for="firstNameInput">First Name</label>
@@ -76,13 +76,15 @@
         <label for="job-keywords">Keywords (comma seperated words)</label>
         <input type="text" class="form-control" id="job-keywords" placeholder="JavaScript, OOP, etc."> 
       </div>
-      <button type="submit" class="btn btn-primary" id="job-submit">Submit</button>
+      <div class = "text-center">
+        <button type="submit" class="btn btn-primary btn-block" id="jobSubmit">Submit</button>
+      </div>    
     </form>
   </div>
 
   <!-- Footer -->
   <footer class="py-3 bg-primary">
-    <div class="container">
+    <div>
       <p class="m-0 text-center text-white">Copyright &copy; CCRH 2018</p>
     </div>
   </footer>

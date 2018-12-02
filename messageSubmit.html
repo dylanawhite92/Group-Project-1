@@ -49,7 +49,7 @@
   </nav>
 
   <!-- Chatbox -->
-  <div class="container-fluid">
+  <div class="container">
     <div class="card w-50" id="message-board" style="margin: auto;">
       <h1 class="chat-title text-center">Chat with other users on CCRH!</h1>
       <div id="message-area">Messages go here.</div>
@@ -69,9 +69,11 @@
           <label for="jobDescription">Message</label>
           <textarea class="form-control" id="message" rows="8" placeholder="Type something here..."></textarea>  
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" id = "messageSubmit">
+      <div class = "text-center">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalLong" id = "messageSubmit">
           Submit
-      </button>
+        </button>
+      </div>
         
         <!-- Modal -->
         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -97,7 +99,7 @@
 
   <!-- Footer -->
   <footer class="py-3 bg-primary">
-    <div class="container">
+    <div>
       <p class="m-0 text-center text-white">Copyright &copy; CCRH 2018</p>
     </div>
   </footer>
