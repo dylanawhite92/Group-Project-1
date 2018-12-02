@@ -74,7 +74,6 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Gain access to Google Maps API, include business locations in small div within listing.
 * Glassdoor API? Show rating of company, former employee reviews, etc.
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
-* Overhaul styling.
 * Build animated landing page.
 
 ## How To Contribute

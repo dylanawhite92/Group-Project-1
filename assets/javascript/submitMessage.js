@@ -20,6 +20,14 @@ function writeMessage(id, firstName, lastName, message) {
   });
 }
 
+function validateForm() {
+  let userFirstName = $("firstNameInput").val();
+  let userLastName = $("lastNameInput").val();
+  let userMessage = $("message").val();
+
+  let inputVal = new Array(userFirstName, userLastName, userMessage)
+};
+
 var value = sessionStorage.getItem("id");
 
 // Append messages stored in firebase to page
@@ -60,6 +68,5 @@ $(document).ready(function(){
     $("#firstNameInput").val("");
     $("#lastNameInput").val("");
     $("#message").val("");
-  });
-  
+  }); 
 });
