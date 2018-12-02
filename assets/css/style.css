@@ -18,6 +18,12 @@ body {
   border-color: rgb(173, 173, 133);
 }
 
+button:hover {
+  background-color: white!important;
+  border-color: rgb(255, 255, 255)!important;
+  color: black!important;
+}
+
 .container{
   border-radius: 10px;
   background: rgba(173, 173, 133, 0.6);
