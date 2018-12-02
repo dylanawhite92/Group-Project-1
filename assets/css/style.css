@@ -1,3 +1,21 @@
+body {
+  background-image: url(../images/skyline-bg.jpg);
+  background-size: cover;
+}
+
+#index-header {
+  color: white;
+}
+
+.bg-primary {
+  background-color: #adad85!important;
+  opacity: 0.8;
+}
+
+#divider {
+  padding-top: 15px;
+}
+
 ul {
   max-width: 100%;
   margin-bottom: 60px;
