@@ -1,22 +1,21 @@
 const HEROKU_REDIRECT = "https://cors-anywhere.herokuapp.com/";
 const GITHUB_JOB_URL = "https://jobs.github.com/positions.json?search=";
-const KHAN_ACADEMY_URL = "https://www.khanacademy.org/api/v1/playlists/";
+const KHAN_ACADEMY_URL = "http://www.khanacademy.org/api/v1/topic/";
 const KHAN_ACADEMY_URL2 = "/videos";
 const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=JCADVWXDZ2YXAS473ULD&q=";
+const EVENT_BRIGHT_URL2 = "&location.within=30mi&location.latitude=41.8781&location.longitude=-87.6298";
 const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
+// This function determines which dataset is onscreen
 function renderScreen(data, type) {
   console.log(data);
-
-  if (data.events != null) {
-    data = data.events;
-  }
 
   let listToChange;
 
   if (type === 'job') {
     listToChange = "#job-list";
   } else if (type === 'event') {
+    // data = data[0];
     listToChange = '#event-list';
   } else {
     listToChange = '#education-list';
@@ -47,10 +46,10 @@ function renderScreen(data, type) {
       newSpan.text("Education");
       divHeader.prepend(newSpan);
       textDisplay = `<a href="${data[i].url}">${data[i].url}</a>`
-      console.log(data[i].url);
       header = data[i].description;
     } 
     else {
+      console.log(data[i]);
       newSpan.addClass("badge-warning");
       newSpan.text("Event");
       divHeader.prepend(newSpan);
@@ -70,61 +69,9 @@ function renderScreen(data, type) {
 
 $(document).ready(function () {
 
-  let jobData;
-  let eventData;
-  let educationData;
-
-  // dataObject.hasOwnProperty prevents from grabbing properties from prototype 
-  function ajaxGetRequest(urlToCall, queryParameter, dataObject){
-    $.ajax({
-      type: 'GET',
-      url: (`${HEROKU_REDIRECT}${urlToCall}${queryParameter}`),
-    }).then(function(data) {
-      let newArray = [...data];
-      for (var key in dataObject) {
-        dataObject[key].id = key;
-        if (dataObject.hasOwnProperty(key)) {
-            newArray.push(dataObject[key]);
-        }
-    }
-      jobData = newArray;
-      console.log(jobData);
-    });
-  };
-
-  function ajaxGetRequestNoRedirect(urlToCall, queryParameter, dataObject){
-    $.ajax({
-      type: 'GET',
-      url: (`${urlToCall}${queryParameter}`),
-    }).then(function(data) {
-      let newArray = [...data.events];
-
-      for (var key in dataObject) {
-        dataObject[key].id = key;
-        if (dataObject.hasOwnProperty(key)) {
-            newArray.push(dataObject[key]);
-        }
-    }
-      eventData = newArray;
-      console.log(eventData);
-    });
-  }
-
-  function ajaxGetRequestKHAN(urlToCall, url_2nd_half, queryParameter, dataObject){
-    $.ajax({
-      type: 'GET',
-      url: (`${urlToCall}${queryParameter}${url_2nd_half}`),
-    }).then(function(data) {
-      let newArray = [...data];
-      for (var key in dataObject) {
-        if (dataObject.hasOwnProperty(key)) {
-          newArray.push(dataObject[key]);
-        }
-      }
-      educationData = newArray;
-      console.log(educationData);
-    });
-  }
+  let jobData = [];
+  let eventData = [];
+  let educationData = [];
 
   $(".category").on("click", function(event) {
       if ($(this).attr('data-id') === "job") {
@@ -141,24 +88,95 @@ $(document).ready(function () {
   $(document).on('click', '.badge', function(event){
     createSessionStorageData('id', $(this).data('id'),);
   });
-  // Request Github Jobs Data
-  $.ajax({
-    url: 'https://group-project-1-cfef2.firebaseio.com/jobs.json',
-    type: "GET",
-  }).then(function(data) {
-    ajaxGetRequest(GITHUB_JOB_URL, "javascript", data);
+
+  $(document).on('click', '#search-submit-button', function(event) {
+    event.preventDefault();
+    let queryParameter = $('#search-text').val().trim();
+    if (queryParameter !== '') {
+      let dataPromise = loadData(queryParameter);
+      dataPromise.then(function(value) {
+        eventData = [...value[4]];
+        jobData = [...value[0], ...value[3]];
+        educationData = [...value[1], ...value[2]];
+      });
+    }
   });
 
-  // Request Khan Academy Education Data 
-  $.ajax({
-    url: 'https://group-project-1-cfef2.firebaseio.com/education.json',
-    type: "GET",
-  }).then(function(data) {
-    ajaxGetRequestKHAN(KHAN_ACADEMY_URL, KHAN_ACADEMY_URL2, "pre-algebra-exponents", data);
-  });
-
-  ajaxGetRequestNoRedirect(EVENT_BRIGHT_URL, "tech");
+  let dataPromise = loadData('tech');
+  dataPromise.then(function(value) {
+    console.log(value);
+    eventData = [...value[4]];
+    jobData = [...value[0], ...value[3]];
+    educationData = [...value[1], ...value[2]];
+  })
 });
+
+// Returns a single promise containing all data from promises
+async function loadData(query){
+  let promise_firebase_jobs = firebaseGetRequest('jobs');
+  let promise_firebase_education = firebaseGetRequest('education');
+  let promise_education = httpGetRequest(KHAN_ACADEMY_URL, query, true, KHAN_ACADEMY_URL2);
+  let promise_jobs = httpGetRequest(GITHUB_JOB_URL, query, true);
+  let promise_events = httpGetRequest(EVENT_BRIGHT_URL, query, false, EVENT_BRIGHT_URL2);
+  
+  return (Promise.all([
+    // turns object into array
+    promise_firebase_jobs.then(function(value){
+      let newArray = [];
+      for (var key in value) {
+        value[key].id = key;
+        if (value.hasOwnProperty(key)) {
+            newArray.push(value[key]);
+        }
+      }
+      console.log(newArray);
+      return newArray;
+    }), 
+    // Turns object into array
+    promise_firebase_education.then(function(value){
+      let newArray = [];
+      for (var key in value) {
+        value[key].id = key;
+        if (value.hasOwnProperty(key)) {
+            newArray.push(value[key]);
+        }
+      }
+      console.log(newArray);
+      return newArray;
+    }), 
+    promise_education.catch(e => ([])), 
+    promise_jobs, 
+    promise_events.then(p => p.events)
+  ])
+    .then(results => {
+      console.log(results)
+      return results
+    }))
+}
+
+// returns a promise
+function httpGetRequest(urlToCall, queryParameter, requiresRedirect, secondPartOfUrl="") {
+  let url = ''; 
+  if (requiresRedirect === true) {
+    url += HEROKU_REDIRECT;
+  }
+  url += urlToCall + queryParameter + secondPartOfUrl;
+  console.log(url);
+  return $.ajax({
+    'type': 'GET',
+    'url': url,
+  });
+}
+
+function firebaseGetRequest(dataToSee, secondPartOfUrl=".json") {
+  let url = 'https://group-project-1-cfef2.firebaseio.com/'; 
+  url += dataToSee + secondPartOfUrl;
+
+  return $.ajax({
+    'type': 'GET',
+    'url': url,
+  });
+}
 
 function createSessionStorageData(key, value) {
   sessionStorage.setItem(key, value);
