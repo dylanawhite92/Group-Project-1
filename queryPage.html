@@ -43,8 +43,8 @@
     </div>
   </nav>
 
+  <!-- Heading Row -->
   <div class = "container">
-    <!-- Heading Row -->
     <div class="row my-4">
       <div class="col-lg-8">
         <img class="img-fluid rounded" src="assets/images/skyline.png" alt="skyline.png">
@@ -57,16 +57,19 @@
   
     <div class="card text-white bg-primary my-4 text-center">
       <div class="card-body">
-        <p class="text-white m-0">Below we provide search results for jobs and events in the Chicago area, and educational materials to build upon your skills!</p>
+        <p class="text-white m-0">
+          Below we provide search results for jobs and events in the Chicago area, and educational materials to build upon your skills. 
+          Just give any of the buttons below a click, and see what we have to offer!
+        </p>
       </div>
     </div>
 
+    <!-- Radio Button Container -->
     <div class="card text-white bg-primary my-4 text-center" id = "toggle-container">
       <div class="card-body">
-        <!-- Radio Buttons -->
-        <div class = "row">
-          <div class = "col-md-4"></div>
-          <div class = "col-md-3">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-dark active category" data-id="job">
                 <input type="radio" name="options" id="job-check" autocomplete="off" checked> Jobs
@@ -79,29 +82,32 @@
               </label>
             </div>
           </div>
-          <div class = "col-md-4"></div>
+          <div class="col-md-4"></div>
         </div>
       </div>
     </div>
     
-  <div class="container">
-        <!-- Media Object Feed -->
-        <div class = "row">
-            <ul class="list-unstyled" id="job-list"></ul>
-            <ul class="list-unstyled" id="education-list"></ul>
-            <ul class="list-unstyled" id="event-list"></ul>
-        </div>
-      </div>
+    
 
-    <!-- Footer -->
-    <footer class="py-3 bg-primary">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; CCRH 2018</p>
+    <!-- Media Object Feed -->
+    <!-- Animated Spinning Loader -->
+    <div class="container">
+      <div class = "row">
+          <!-- <div class="loader"></div> -->
+        <ul class="list-unstyled" id="job-list"></ul>
+        <ul class="list-unstyled" id="education-list"></ul>
+        <ul class="list-unstyled" id="event-list"></ul>
       </div>
-      <!-- /.container -->
-    </footer>
+    </div>
+  </div>
 
-    <!--  Script References -->
+  <!-- Footer -->
+  <footer class="py-3 bg-primary">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; CCRH 2018</p>
+    </div>
+  </footer>
+
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <!-- Bootsrap jQuery/JavaScript CDN -->

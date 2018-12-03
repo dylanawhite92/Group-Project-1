@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   // writeJobData('kaleb', 'test', 'test@SpeechGrammarList.com', 'software Engineer', 'have to like dogs', ['frogs', 'dogs', 'code', 'tech', 'javaScript']);
 
-
+  // Grab data from submission form on click of submit button, clear forms after
   $(document).on("click", '#job-submit', function(event){
     event.preventDefault();
 

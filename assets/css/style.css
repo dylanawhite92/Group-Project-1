@@ -1,3 +1,48 @@
+body {
+  background-image: url(../images/skyline-bg.jpg);
+  background-size: cover;
+}
+
+.index-header, label {
+  color: white;
+}
+
+.bg-primary {
+  background: rgba(173, 173, 133, 0.4)!important;
+  /* background-color: #adad85!important;
+  opacity: 0.8; */
+}
+
+.btn-primary {
+  background: rgba(173, 173, 133, 0.8);
+  border-color: rgb(173, 173, 133);
+}
+
+button:hover {
+  background-color: lightgoldenrodyellow!important;
+  border-color: lightgoldenrodyellow!important;
+  color: black!important;
+}
+
+.container{
+  border-radius: 10px;
+  background: rgba(173, 173, 133, 0.6);
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #555;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);} 
+}
+
 ul {
   max-width: 100%;
   margin-bottom: 60px;
@@ -8,7 +53,7 @@ ul > * {
 }
 
 footer {
-  margin-top: 50px;
+  margin-top: 10px;
   width: 100%;
   bottom: 0px;
   left: 0px;
