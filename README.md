@@ -75,6 +75,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Glassdoor API? Show rating of company, former employee reviews, etc.
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
+* Change radio button colors to fit the page.
 
 ## How To Contribute
 
