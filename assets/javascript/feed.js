@@ -6,7 +6,17 @@ const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=
 const EVENT_BRIGHT_URL2 = "&location.within=30mi&location.latitude=41.8781&location.longitude=-87.6298";
 const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
-// This function determines which dataset is onscreen
+function loaderWheel() {
+  var loader = $("<div>").addClass("loader");
+  $(loader).addClass("show");
+
+  $("#query-feed").prepend(loader);
+};
+
+function hideWheel() {
+  $(".loader").remove();
+};
+// This function determines which data set is on-screen
 function renderScreen(data, type) {
   console.log(data);
 
@@ -14,14 +24,18 @@ function renderScreen(data, type) {
 
   if (type === 'job') {
     listToChange = "#job-list";
-  } else if (type === 'event') {
-    // data = data[0];
+  } 
+  else if (type === 'event') {
     listToChange = '#event-list';
-  } else {
+  } 
+  else {
     listToChange = '#education-list';
   }
 
   $(".list-unstyled").empty();
+
+  loaderWheel();
+
   for (let i = 0; i < data.length; i++) {
     var newMediaObject = $("<li>").addClass("media my-2")
     var newSpan = $("<span>").addClass("badge badge-pill");
@@ -73,16 +87,28 @@ $(document).ready(function () {
   let eventData = [];
   let educationData = [];
 
+  // function loaderWheel() {
+  //   var loader = $("<div>").addClass("loader");
+  //   $(loader).addClass("show");
+  
+  //   $("#query-feed").prepend(loader);
+  // }
+
   $(".category").on("click", function(event) {
-      if ($(this).attr('data-id') === "job") {
-        renderScreen(jobData, 'job');
-      }
-      else if ($(this).attr('data-id') === "education") {
-        renderScreen(educationData, 'education');
-      }
-      else if ($(this).attr('data-id') === "event") {
-         renderScreen(eventData, 'event');
-      }
+
+    // loaderWheel();
+
+    if ($(this).attr('data-id') === "job") {
+      renderScreen(jobData, 'job');
+    }
+    else if ($(this).attr('data-id') === "education") {
+      renderScreen(educationData, 'education');
+    }
+    else if ($(this).attr('data-id') === "event") {
+      renderScreen(eventData, 'event');
+    }
+
+    // $(".loader").remove();
   });
 
   $(document).on('click', '.badge', function(event){

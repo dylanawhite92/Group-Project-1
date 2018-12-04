@@ -3,7 +3,11 @@ body {
   background-size: cover;
 }
 
-.index-header, label {
+#query-feed {
+  min-height: 150px;
+}
+
+.header, label {
   color: white;
 }
 
@@ -29,7 +33,17 @@ button:hover {
   background: rgba(173, 173, 133, 0.6);
 }
 
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 .loader {
+  margin: auto;
+  margin-top: 25px;
   border: 10px solid #f3f3f3;
   border-top: 10px solid #555;
   border-radius: 50%;
