@@ -6,7 +6,7 @@ const EVENT_BRIGHT_URL = "https://www.eventbriteapi.com/v3/events/search/?token=
 const EVENT_BRIGHT_URL2 = "&location.within=30mi&location.latitude=41.8781&location.longitude=-87.6298";
 const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
-function loaderWheel() {
+function displayWheel() {
   var loader = $("<div>").addClass("loader");
   $(loader).addClass("show");
 
@@ -34,7 +34,7 @@ function renderScreen(data, type) {
 
   $(".list-unstyled").empty();
 
-  loaderWheel();
+  displayWheel();
 
   for (let i = 0; i < data.length; i++) {
     var newMediaObject = $("<li>").addClass("media my-2")
