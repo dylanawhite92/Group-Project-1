@@ -68,8 +68,10 @@ $(document).ready(function() {
     if (first && last && email && job && location && description && keywords) {
       writeJobData($('#firstNameInput').val(), $('#lastNameInput').val(), $('#contactEmailInput').val(), 
       $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $('#jobDescriptionInput').val(), arrayOfKeywords);
+      
       clearForms();
     }
+    
     if (!first) {
       $("#firstNameValidation").text("Please enter a valid first name!");
     }

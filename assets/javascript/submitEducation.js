@@ -25,11 +25,39 @@ $(document).ready(function() {
     });
   }
 
+  function clearForms() {
+    $('#firstNameInput').val("");
+    $('#lastNameInput').val("");
+    $('#contactEmailInput').val("");
+    $('#exampleFormControlInput1').val("");
+    $('#exampleFormControlInput2').val("");
+    $('#jobDescriptionInput').val("");
+    $("#jobKeywordsInput").val("");
+  };
+
+  function clearValidation() {
+    $("#firstNameValidation").empty();
+    $("#lastNameValidation").empty();
+    $("#emailValidation").empty();
+    $("#jobTitleValidation").empty();
+    $("#jobLocationValidation").empty();
+    $("#descriptionValidation").empty();
+    $("#keywordValidation").empty();
+  };
+
   // Grab data from submission form on click of submit button, clear forms after
   // Validate forms to make sure they aren't empty/correct data types
   // Validate email with mailboxlayer API
   $(document).on("click", '#educationSubmit', function(event){
     event.preventDefault();
+
+    let first = $('#firstNameInput').val().trim();
+    let last = $('#lastNameInput').val().trim();
+    let email = $('#contactEmailInput').val().trim();
+    let job = $('#exampleFormControlInput1').val().trim();
+    let location = $('#exampleFormControlInput2').val().trim();
+    let description = $('#jobDescriptionInput').val().trim();
+    let keywords = $('#jobKeywordsInput').val().trim();
 
     let string = $('#educationKeywords').val();
     let arrayOfKeywords = string.split(',')
