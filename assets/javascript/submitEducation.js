@@ -30,17 +30,17 @@ $(document).ready(function() {
     $('#lastNameInput').val("");
     $('#contactEmailInput').val("");
     $('#exampleFormControlInput1').val("");
-    $('#exampleFormControlInput2').val("");
-    $('#jobDescriptionInput').val("");
-    $("#jobKeywordsInput").val("");
+    $('#linkInput').val("");
+    $('#educationDescriptionInput').val("");
+    $("#educationKeywordsInput").val("");
   };
 
   function clearValidation() {
     $("#firstNameValidation").empty();
     $("#lastNameValidation").empty();
     $("#emailValidation").empty();
-    $("#jobTitleValidation").empty();
-    $("#jobLocationValidation").empty();
+    $("#educationTitleValidation").empty();
+    $("#linkValidation").empty();
     $("#descriptionValidation").empty();
     $("#keywordValidation").empty();
   };
@@ -51,25 +51,46 @@ $(document).ready(function() {
   $(document).on("click", '#educationSubmit', function(event){
     event.preventDefault();
 
+    clearValidation();
+
     let first = $('#firstNameInput').val().trim();
     let last = $('#lastNameInput').val().trim();
     let email = $('#contactEmailInput').val().trim();
-    let job = $('#exampleFormControlInput1').val().trim();
-    let location = $('#exampleFormControlInput2').val().trim();
-    let description = $('#jobDescriptionInput').val().trim();
-    let keywords = $('#jobKeywordsInput').val().trim();
+    let education = $('#exampleFormControlInput1').val().trim();
+    let link = $('#linkInput').val().trim();
+    let description = $('#educationDescriptionInput').val().trim();
+    let keywords = $('#educationKeywordsInput').val().trim();
 
-    let string = $('#educationKeywords').val();
+    let string = $('#educationKeywordsInput').val();
     let arrayOfKeywords = string.split(',')
 
-    writeEducationData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $("#linkInput").val(), $("#educationDescription").val() ,arrayOfKeywords);
+    if (first && last && email && education && link && description && keywords) {
+    writeEducationData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmailInput').val(), 
+    $('#exampleFormControlInput1').val(), $("#linkInput").val(), $("#educationDescriptionInput").val() ,arrayOfKeywords);
 
-    $("#firstNameInput").val("") 
-    $('#lastNameInput').val("");
-    $('#contactEmail').val("");
-    $('#exampleFormControlInput1').val("")
-    $('#linkInput').val("")
-    $("#educationDescription").val("");
-    $("#educationKeywords").val("");
+    clearForms();
+    }
+
+    if (!first) {
+      $("#firstNameValidation").text("Please enter a valid first name!");
+    }
+    if (!last) {
+      $("#lastNameValidation").text("Please enter a valid last name!");
+    }
+    if (!email) {
+      $("#emailValidation").text("Please enter a valid email address!");
+    }
+    if (!education) {
+      $("#educationTitleValidation").text("Please enter a valid title!");
+    }
+    if (!link) {
+      $("#linkValidation").text("Please enter a valid link!");
+    }
+    if (!description) {
+      $("#descriptionValidation").text("Please enter a valid description!");
+    }
+    if (!keywords) {
+      $("#keywordValidation").text("Please enter any number of valid keywords!");
+    }
   })
 });

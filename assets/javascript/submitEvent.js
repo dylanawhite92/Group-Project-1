@@ -68,6 +68,7 @@ $(document).ready(function() {
       
       clearForms();
     }
+
     if (!first) {
       $("#firstNameValidation").text("Please enter a valid first name!");
     }
@@ -78,7 +79,7 @@ $(document).ready(function() {
       $("#emailValidation").text("Please enter a valid email address!");
     }
     if (!userEvent) {
-      $("#eventTitleValidation").text("Please enter a valid job title!");
+      $("#eventTitleValidation").text("Please enter a valid event title!");
     }
     if (!location) {
       $("#locationValidation").text("Please enter a valid location!");
