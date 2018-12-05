@@ -12,6 +12,11 @@ body {
   color: white;
 }
 
+.formValidation {
+  color: palegoldenrod;
+  text-shadow: 2px 2px 4px black;
+}
+
 .bg-primary {
   background: rgba(173, 173, 133, 0.4)!important;
 }
