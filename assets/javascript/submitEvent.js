@@ -13,7 +13,7 @@ $(document).ready(function() {
   // Create a variable to reference the database
   var database = firebase.database();
 
-  function writeJobData(firstName, lastName, email, title, location, eventDescription, keywordsArray) {
+  function writeEventData(firstName, lastName, email, title, location, eventDescription, keywordsArray) {
     firebase.database().ref('/events/').push({
       'firstName': firstName,
       'lastName': lastName,
@@ -32,7 +32,7 @@ $(document).ready(function() {
     let string = $('#eventKeywords').val();
     let arrayOfKeywords = string.split(',')
 
-    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $("#eventDescription").val() ,arrayOfKeywords);
+    writeEventData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $("#eventDescription").val() ,arrayOfKeywords);
 
     $("#firstNameInput").val("") 
     $('#lastNameInput').val("");
