@@ -26,23 +26,70 @@ $(document).ready(function() {
     });
   }
 
+  function clearForms() {
+    $('#firstNameInput').val("");
+    $('#lastNameInput').val("");
+    $('#contactEmailInput').val("");
+    $('#exampleFormControlInput1').val("");
+    $('#exampleFormControlInput2').val("");
+    $('#jobDescriptionInput').val("");
+    $("#jobKeywordsInput").val("");
+  };
+
+  function clearValidation() {
+    $("#firstNameValidation").empty();
+    $("#lastNameValidation").empty();
+    $("#emailValidation").empty();
+    $("#jobTitleValidation").empty();
+    $("#jobLocationValidation").empty();
+    $("#descriptionValidation").empty();
+    $("#keywordValidation").empty();
+  };
+
   // writeJobData('kaleb', 'test', 'test@SpeechGrammarList.com', 'software Engineer', 'have to like dogs', ['frogs', 'dogs', 'code', 'tech', 'javaScript']);
 
   // Grab data from submission form on click of submit button, clear forms after
   $(document).on("click", '#jobSubmit', function(event){
     event.preventDefault();
 
-    let string = $('#job-keywords').val().trim();
+    clearValidation();
+
+    let first = $('#firstNameInput').val().trim();
+    let last = $('#lastNameInput').val().trim();
+    let email = $('#contactEmailInput').val().trim();
+    let job = $('#exampleFormControlInput1').val().trim();
+    let location = $('#exampleFormControlInput2').val().trim();
+    let description = $('#jobDescriptionInput').val().trim();
+    let keywords = $('#jobKeywordsInput').val().trim();
+
+    let string = $('#jobKeywordsInput').val();
     let arrayOfKeywords = string.split(',')
 
-    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $('#jobDescription').val(), arrayOfKeywords);
-
-    $("#firstNameInput").val("") 
-    $('#lastNameInput').val("");
-    $('#contactEmail').val("");
-    $('#exampleFormControlInput1').val("");
-    $('#exampleFormControlInput2').val("")
-    $("#jobDescription").val("");
-    $("#job-keywords").val("");
+    if (first && last && email && job && location && description && keywords) {
+      writeJobData($('#firstNameInput').val(), $('#lastNameInput').val(), $('#contactEmailInput').val(), 
+      $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $('#jobDescriptionInput').val(), arrayOfKeywords);
+      clearForms();
+    }
+    if (!first) {
+      $("#firstNameValidation").text("Please enter a valid first name!");
+    }
+    if (!last) {
+      $("#lastNameValidation").text("Please enter a valid last name!");
+    }
+    if (!email) {
+      $("#emailValidation").text("Please enter a valid email address!");
+    }
+    if (!job) {
+      $("#jobTitleValidation").text("Please enter a valid job title!");
+    }
+    if (!location) {
+      $("#jobLocationValidation").text("Please enter a valid location!");
+    }
+    if (!description) {
+      $("#descriptionValidation").text("Please enter a valid description!");
+    }
+    if (!keywords) {
+      $("#keywordValidation").text("Please enter any number of valid keywords!");
+    }
   })
 });
