@@ -13,7 +13,7 @@ $(document).ready(function() {
   // Create a variable to reference the database
   var database = firebase.database();
 
-  function writeJobData(firstName, lastName, email, title, link, educationDescription, keywordsArray) {
+  function writeEducationData(firstName, lastName, email, title, link, educationDescription, keywordsArray) {
     firebase.database().ref('/education/').push({
       'firstName': firstName,
       'lastName': lastName,
@@ -25,23 +25,72 @@ $(document).ready(function() {
     });
   }
 
+  function clearForms() {
+    $('#firstNameInput').val("");
+    $('#lastNameInput').val("");
+    $('#contactEmailInput').val("");
+    $('#exampleFormControlInput1').val("");
+    $('#linkInput').val("");
+    $('#educationDescriptionInput').val("");
+    $("#educationKeywordsInput").val("");
+  };
+
+  function clearValidation() {
+    $("#firstNameValidation").empty();
+    $("#lastNameValidation").empty();
+    $("#emailValidation").empty();
+    $("#educationTitleValidation").empty();
+    $("#linkValidation").empty();
+    $("#descriptionValidation").empty();
+    $("#keywordValidation").empty();
+  };
+
   // Grab data from submission form on click of submit button, clear forms after
   // Validate forms to make sure they aren't empty/correct data types
   // Validate email with mailboxlayer API
   $(document).on("click", '#educationSubmit', function(event){
     event.preventDefault();
 
-    let string = $('#educationKeywords').val();
+    clearValidation();
+
+    let first = $('#firstNameInput').val().trim();
+    let last = $('#lastNameInput').val().trim();
+    let email = $('#contactEmailInput').val().trim();
+    let education = $('#exampleFormControlInput1').val().trim();
+    let link = $('#linkInput').val().trim();
+    let description = $('#educationDescriptionInput').val().trim();
+    let keywords = $('#educationKeywordsInput').val().trim();
+
+    let string = $('#educationKeywordsInput').val();
     let arrayOfKeywords = string.split(',')
 
-    writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $("#linkInput").val(), $("#educationDescription").val() ,arrayOfKeywords);
+    if (first && last && email && education && link && description && keywords) {
+    writeEducationData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmailInput').val(), 
+    $('#exampleFormControlInput1').val(), $("#linkInput").val(), $("#educationDescriptionInput").val() ,arrayOfKeywords);
 
-    $("#firstNameInput").val("") 
-    $('#lastNameInput').val("");
-    $('#contactEmail').val("");
-    $('#exampleFormControlInput1').val("")
-    $('#linkInput').val("")
-    $("#educationDescription").val("");
-    $("#educationKeywords").val("");
+    clearForms();
+    }
+
+    if (!first) {
+      $("#firstNameValidation").text("Please enter a valid first name!");
+    }
+    if (!last) {
+      $("#lastNameValidation").text("Please enter a valid last name!");
+    }
+    if (!email) {
+      $("#emailValidation").text("Please enter a valid email address!");
+    }
+    if (!education) {
+      $("#educationTitleValidation").text("Please enter a valid title!");
+    }
+    if (!link) {
+      $("#linkValidation").text("Please enter a valid link!");
+    }
+    if (!description) {
+      $("#descriptionValidation").text("Please enter a valid description!");
+    }
+    if (!keywords) {
+      $("#keywordValidation").text("Please enter any number of valid keywords!");
+    }
   })
 });

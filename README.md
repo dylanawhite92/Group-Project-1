@@ -61,13 +61,10 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Condense firebase to being called once for all pages.
 * Loading wheel for when the API queries are loading.
 * Improve UX for user clarity.
-* Form validation on education submissions, including empty ones.
-* Form validation on event submissions, including empty ones.
-* Form validation on job submissions, including empty ones.
 * Form validation on message submissions, including empty ones.
 * Add mailboxlayer API to check for valid email addresses.
 * Chatbox, beautify formatting. Make dynamic, and not require refresh.
-* Use Moment.js to add timestamps to chat messages.
+* Use Moment.js to add timestamps to chat messages?
 * Change badges in queryPage to be two badges, one to say submit a message and the other to collapse the divs in query listings for easier scrollability, particularly jobs/events.
 * Add more parameters to query listings for more descriptive listings, e.g. Employer Name, Location.
 * Check out Chicago's open data sets, see how they can be integrated.
@@ -76,8 +73,6 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
 * Change radio button colors to fit the page.
-* Events feed changes background to black/removes background.
-* Loading wheel will show even if no search term is passed.
 
 ## How To Contribute
 
