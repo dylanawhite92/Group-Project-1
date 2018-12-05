@@ -1,13 +1,14 @@
 body {
   background-image: url(../images/skyline-bg.jpg);
   background-size: cover;
+  background-attachment: fixed;
 }
 
-#query-feed {
-  min-height: 150px;
+#query-feed, #feed-container {
+  min-height: 500px;
 }
 
-.header, label {
+.header, label, #feed-placeholder {
   color: white;
 }
 
@@ -43,15 +44,20 @@ button:hover {
   display: none;
 }
 
+#query-feed {
+  display: none;
+}
+
 .loader {
+  /* display: none; */
   margin: auto;
   margin-top: 25px;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   border: 15px solid #f3f3f3;
   border-top: 15px solid #555;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   animation: spin 1s linear infinite;
 }
 

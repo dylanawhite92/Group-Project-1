@@ -45,26 +45,7 @@
 
   <!-- Heading Row -->
   <div class = "container pb-3">
-    <div class="row my-4">
-      <div class="col-lg text-center header">
-        <h1>Chicago Coding Resource Hub</h1>
-      </div>
-    </div>
-    <div class="row my-4">
-      <div class="col-lg text-center header">
-        <p>Scroll down to checkout what opportunities the Chicago tech scene has to offer aspiring developers!</p>
-      </div>
-    </div>
-  
-    <div class="card text-white bg-primary my-4 text-center">
-      <div class="card-body">
-        <p class="text-white m-0">
-          Below we provide search results for jobs and events in the Chicago area, and educational materials to build upon your skills. 
-          Just give any of the buttons below a click, and see what we have to offer!
-        </p>
-      </div>
-    </div>
-
+    
     <!-- Radio Button Container -->
     <div class="card text-white bg-primary my-4 text-center" id = "toggle-container">
       <div class="card-body">
@@ -92,11 +73,14 @@
 
     <!-- Media Object Feed -->
     <!-- Animated Spinning Loader Destination-->
-    <div class="container">
+    <div class="container" id="feed-container">
       <div class="row">
         <div class="col-md-12">
-          <p class="text-center">Search Results:</p>
+          <p class="text-center" id="feed-placeholder">Search Results Will Be Displayed Here!</p>
         </div>
+      </div>
+      <div class="row" id="loader-container">
+          <div class="loader"></div>
       </div>
       <div class="row" id="query-feed">
         <ul class="list-unstyled" id="job-list"></ul>
