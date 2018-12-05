@@ -76,6 +76,8 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
 * Change radio button colors to fit the page.
+* Events feed changes background to black/removes background.
+* Loading wheel will show even if no search term is passed.
 
 ## How To Contribute
 
