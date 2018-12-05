@@ -8,7 +8,7 @@ const DATABASE_URL = "https://group-project-1-cfef2.firebaseio.com";
 
 // This function determines which data set is on-screen
 function renderScreen(data, type) {
-  console.log(data);
+  // console.log(data);
 
   $("#query-feed").css("display", "none");
   $("#loader-container").fadeIn().delay(800).fadeOut("fast");
@@ -54,7 +54,7 @@ function renderScreen(data, type) {
       header = data[i].description;
     } 
     else {
-      console.log(data[i]);
+      // console.log(data[i]);
       newSpan.addClass("badge-warning");
       newSpan.text("Event");
       divHeader.prepend(newSpan);
@@ -112,7 +112,7 @@ $(document).ready(function () {
 
   let dataPromise = loadData('tech');
   dataPromise.then(function(value) {
-    console.log(value);
+    // console.log(value);
     eventData = [...value[4]];
     jobData = [...value[0], ...value[3]];
     educationData = [...value[1], ...value[2]];
@@ -137,7 +137,7 @@ async function loadData(query){
             newArray.push(value[key]);
         }
       }
-      console.log(newArray);
+      // console.log(newArray);
       return newArray;
     }), 
     // Turns object into array
@@ -149,7 +149,7 @@ async function loadData(query){
             newArray.push(value[key]);
         }
       }
-      console.log(newArray);
+      // console.log(newArray);
       return newArray;
     }), 
     promise_education.catch(e => ([])), 
@@ -157,7 +157,7 @@ async function loadData(query){
     promise_events.then(p => p.events)
   ])
     .then(results => {
-      console.log(results)
+      // console.log(results)
       return results
     }))
 }
@@ -169,7 +169,7 @@ function httpGetRequest(urlToCall, queryParameter, requiresRedirect, secondPartO
     url += HEROKU_REDIRECT;
   }
   url += urlToCall + queryParameter + secondPartOfUrl;
-  console.log(url);
+  // console.log(url);
   return $.ajax({
     'type': 'GET',
     'url': url,
