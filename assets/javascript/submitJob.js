@@ -29,10 +29,10 @@ $(document).ready(function() {
   // writeJobData('kaleb', 'test', 'test@SpeechGrammarList.com', 'software Engineer', 'have to like dogs', ['frogs', 'dogs', 'code', 'tech', 'javaScript']);
 
   // Grab data from submission form on click of submit button, clear forms after
-  $(document).on("click", '#job-submit', function(event){
+  $(document).on("click", '#jobSubmit', function(event){
     event.preventDefault();
 
-    let string = $('#job-keywords').val();
+    let string = $('#job-keywords').val().trim();
     let arrayOfKeywords = string.split(',')
 
     writeJobData($("#firstNameInput").val(), $('#lastNameInput').val(), $('#contactEmail').val(), $('#exampleFormControlInput1').val(), $('#exampleFormControlInput2').val(), $('#jobDescription').val(), arrayOfKeywords);

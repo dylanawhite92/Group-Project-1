@@ -28,6 +28,7 @@ $(document).ready(function() {
   // Grab data from submission form on click of submit button, clear forms after
   $(document).on("click", '#eventSubmit', function(event){
     event.preventDefault();
+    alert("We got it")
 
     let string = $('#eventKeywords').val();
     let arrayOfKeywords = string.split(',')
