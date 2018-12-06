@@ -73,7 +73,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
 * Change radio button colors to fit the page.
-* Shift timing of feed animation and test it. Now that it's live, the larger ones are not loading correctly.
+* Feed doesn't seem to load on the first click of the radio toggle buttons? Loading wheel spins, plays, and then the feed doesn't load. It takes a couple of clicks to get it to work.
 
 ## How To Contribute
 

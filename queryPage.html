@@ -36,10 +36,6 @@
           <a class="nav-link" href="messageSubmit.html">Message Submission</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-text">
-        <button class="btn btn-success my-2 my-sm-0" type="submit" id="search-submit-button">Search</button>
-      </form>
     </div>
   </nav>
 
@@ -50,8 +46,7 @@
     <div class="card text-white bg-primary my-4 text-center" id = "toggle-container">
       <div class="card-body">
         <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-dark active category" data-id="job">
                 <input type="radio" name="options" id="job-check" autocomplete="off" checked> Jobs
@@ -64,7 +59,12 @@
               </label>
             </div>
           </div>
-          <div class="col-md-4"></div>
+          <div class="col-md-6">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-text">
+              <button class="btn btn-success my-2 my-sm-0" type="submit" id="search-submit-button">Search</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
