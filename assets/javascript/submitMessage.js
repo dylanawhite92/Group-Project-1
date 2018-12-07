@@ -31,6 +31,11 @@ function validateForm() {
   let inputVal = new Array(userFirstName, userLastName, userMessage)
 };
 
+function clearForms() {
+  $("#firstNameInput").val("");
+  $("#lastNameInput").val("");
+  $("#message").val("");
+};
 
 // Append messages stored in firebase to page
 $(document).ready(function(){
@@ -52,10 +57,10 @@ $(document).ready(function(){
         newDiv.attr('id', dataPoint);
         arrayOfAppendedMessages.push(dataPoint);
         dataPoint = data[value][dataPoint];
-        let newH1 = $('<h1>');
-        newH1.text(`${dataPoint.firstName} ${dataPoint.lastName}`)
-        newH1.attr('class', 'chat-title text-center');
-        newDiv.append(newH1);
+        let newUserName = $('<p>');
+        newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName}: `)
+        newUserName.attr('class', 'chat-title text-center');
+        newDiv.append(newUserName);
         let messageDiv = $('<div>');
         messageDiv.attr('card-body');
         messageDiv.text(`${dataPoint.message}`);
@@ -68,11 +73,12 @@ $(document).ready(function(){
   // Grab data from submission form on click of submit button, clear forms after
   $(document).on('click', '#messageSubmit', function(event){
     event.preventDefault();
+
+    validateForm();
+
     writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
 
-    $("#firstNameInput").val("");
-    $("#lastNameInput").val("");
-    $("#message").val("");
+    clearForms();
   });
 
   ref.on('value', function(snapshot) {
@@ -98,10 +104,10 @@ function appendData (data, alreadyAppended) {
       newDiv.attr('id', dataPoint);
       alreadyAppended.push(dataPoint);
       dataPoint = data[dataPoint];
-      let newH1 = $('<h1>');
-      newH1.text(`${dataPoint.firstName} ${dataPoint.lastName}`)
-      newH1.attr('class', 'chat-title text-center');
-      newDiv.append(newH1);
+      let newUserName = $('<h1>');
+      newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName}`)
+      newUserName.attr('class', 'chat-title text-center');
+      newDiv.append(newUserName);
       let messageDiv = $('<div>');
       messageDiv.attr('card-body');
       messageDiv.text(`${dataPoint.message}`);

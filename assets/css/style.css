@@ -22,8 +22,16 @@ body {
 }
 
 .btn-primary {
-  background: rgba(173, 173, 133, 0.8);
-  border-color: rgb(173, 173, 133);
+  background: rgba(173, 173, 133, 0.8)!important;
+  border-color: rgb(173, 173, 133)!important;
+}
+
+.btn-dark {
+  background: rgb(92, 92, 61)!important;
+}
+
+.active {
+  background: rgb(46, 46, 31)!important;
 }
 
 button:hover {
