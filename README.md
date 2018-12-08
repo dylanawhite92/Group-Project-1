@@ -58,7 +58,10 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 ## Issues Related To Project
 
 * Search by keyword functionality implemented, but not properly explained to the user yet.
-* Condense firebase to being called once for all pages.
+* Replace education API.
+* Insert our own links.
+* Condense firebase to being called once for all pages. (export module?)
+* Move out of firebase server and into Node.js/mySQL server.
 * Improve UX for user clarity.
 * Add mailboxlayer API to check for valid email addresses.
 * Chatbox, beautify formatting.
@@ -70,7 +73,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Glassdoor API? Show rating of company, former employee reviews, etc.
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
-* Feed doesn't seem to load on the first click of the radio toggle buttons? Loading wheel spins, plays, and then the feed doesn't load. It takes a couple of clicks to get it to work.
+* Feed doesn't seem to load on the first click of the radio toggle buttons? Loading wheel spins, plays, and then the feed doesn't load. It takes a couple of clicks to get it to work. Do we need to load the APIs on page load and have them ready to be displayed to solve this problem, and not on click?
 
 ## How To Contribute
 
