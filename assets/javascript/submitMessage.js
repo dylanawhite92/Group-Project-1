@@ -23,18 +23,16 @@ function writeMessage(id, firstName, lastName, message) {
   });
 }
 
-function validateForm() {
-  let userFirstName = $("firstNameInput").val();
-  let userLastName = $("lastNameInput").val();
-  let userMessage = $("message").val();
-
-  let inputVal = new Array(userFirstName, userLastName, userMessage)
-};
-
 function clearForms() {
   $("#firstNameInput").val("");
   $("#lastNameInput").val("");
   $("#message").val("");
+};
+
+function clearValidation() {
+  $("#firstNameValidation").empty();
+  $("#lastNameValidation").empty();
+  $("#descriptionValidation").empty();
 };
 
 // Append messages stored in firebase to page
@@ -74,11 +72,27 @@ $(document).ready(function(){
   $(document).on('click', '#messageSubmit', function(event){
     event.preventDefault();
 
-    validateForm();
+    clearValidation();
 
-    writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
+    let first = $('#firstNameInput').val().trim();
+    let last = $('#lastNameInput').val().trim();
+    let description = $('#message').val().trim();;
 
-    clearForms();
+    if (first && last && description) {
+      writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
+
+      clearForms();
+    }
+
+    if (!first) {
+      $("#firstNameValidation").text("Please enter a valid first name!");
+    }
+    if (!last) {
+      $("#lastNameValidation").text("Please enter a valid last name!");
+    }
+    if (!description) {
+      $("#descriptionValidation").text("Please enter a valid message!");
+    }
   });
 
   ref.on('value', function(snapshot) {
