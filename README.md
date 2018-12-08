@@ -59,9 +59,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 
 * Search by keyword functionality implemented, but not properly explained to the user yet.
 * Condense firebase to being called once for all pages.
-* Loading wheel for when the API queries are loading.
 * Improve UX for user clarity.
-* Form validation on message submissions, including empty ones.
 * Add mailboxlayer API to check for valid email addresses.
 * Chatbox, beautify formatting.
 * Use Moment.js to add timestamps to chat messages?
@@ -72,7 +70,6 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Glassdoor API? Show rating of company, former employee reviews, etc.
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
-* Change radio button colors to fit the page.
 * Feed doesn't seem to load on the first click of the radio toggle buttons? Loading wheel spins, plays, and then the feed doesn't load. It takes a couple of clicks to get it to work.
 
 ## How To Contribute
