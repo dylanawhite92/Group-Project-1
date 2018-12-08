@@ -38,7 +38,7 @@ body {
   background: rgba(46, 46, 31, .4)!important;
 }
 
-.nav-item {
+.nav-item, .container {
   border-radius: 10px;
 }
 
@@ -53,10 +53,19 @@ button:hover {
 }
 
 .container{
-  border-radius: 10px;
   background: rgba(173, 173, 133, 0.6);
 }
 
+#message-board {
+  height: 450px;
+  width: 550px;
+  padding: 10px;
+  /* float: left; */
+  margin: auto;
+  overflow: scroll;
+}
+
+/* These displays need to be separate because they are manipulated seperately */
 .show {
   display: block;
 }

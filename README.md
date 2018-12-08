@@ -74,6 +74,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Move away from Bootstrap, do more home-grown CSS and possibly Materialize.
 * Build animated landing page.
 * Feed doesn't seem to load on the first click of the radio toggle buttons? Loading wheel spins, plays, and then the feed doesn't load. It takes a couple of clicks to get it to work. Do we need to load the APIs on page load and have them ready to be displayed to solve this problem, and not on click?
+* Disable clicking buttons again until animation completes.
 
 ## How To Contribute
 
