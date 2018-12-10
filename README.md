@@ -75,6 +75,7 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Build animated landing page.
 * Feed doesn't seem to load on the first click of the radio toggle buttons? Loading wheel spins, plays, and then the feed doesn't load. It takes a couple of clicks to get it to work. Do we need to load the APIs on page load and have them ready to be displayed to solve this problem, and not on click?
 * Disable clicking buttons again until animation completes.
+* Add loading animation for chatbox, because it has white space on load.
 
 ## How To Contribute
 

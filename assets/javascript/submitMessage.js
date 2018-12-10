@@ -51,20 +51,28 @@ $(document).ready(function(){
       console.log(dataPoint);
       if (data[value].hasOwnProperty(dataPoint)){
         let newDiv = $('<div>');
-        newDiv.attr('class', 'card');
+
+        newDiv.attr('class', 'chat-log');
         newDiv.attr('id', dataPoint);
-        arrayOfAppendedMessages.push(dataPoint);
-        dataPoint = data[value][dataPoint];
-        let newUserName = $('<p>');
-        newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName}: `)
-        newUserName.attr('class', 'chat-title text-center');
-        newDiv.append(newUserName);
-        let messageDiv = $('<div>');
-        messageDiv.attr('card-body');
-        messageDiv.text(`${dataPoint.message}`);
-        newDiv.append(messageDiv);
-        $('#message-board').append(newDiv);
+
+        alreadyAppended.push(dataPoint);
+        dataPoint = data[dataPoint];
+        
+        $(newDiv).append(`<p class='chat-title'>${dataPoint.firstName} ${dataPoint.lastName} says: ${dataPoint.message}`);
+
+        $('#message-board').append(newDiv);      
       }
+
+        
+        // let newUserName = $('<p>');
+        // newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName} says: `)
+        // newUserName.attr('class', 'chat-title');
+        // let messageDiv = $('<p>');
+        // messageDiv.attr('card-body');
+        // messageDiv.text(`${dataPoint.message}`);
+        // newUserName.append(messageDiv);
+        // newDiv.append(newUserName);
+        // $('#message-board').append(newDiv);      }
     }
   });
 
@@ -114,19 +122,30 @@ function appendData (data, alreadyAppended) {
     } else {
       i++;
       let newDiv = $('<div>');
-      newDiv.attr('class', 'card');
+
+      newDiv.attr('class', 'chat-log');
       newDiv.attr('id', dataPoint);
+
       alreadyAppended.push(dataPoint);
       dataPoint = data[dataPoint];
-      let newUserName = $('<h1>');
-      newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName}`)
-      newUserName.attr('class', 'chat-title text-center');
-      newDiv.append(newUserName);
-      let messageDiv = $('<div>');
-      messageDiv.attr('card-body');
-      messageDiv.text(`${dataPoint.message}`);
-      newDiv.append(messageDiv);
-      $('#message-board').append(newDiv);
+      
+      $(newDiv).append(`<p class='chat-title'>${dataPoint.firstName} ${dataPoint.lastName} says: ${dataPoint.message}`);
+
+      $('#message-board').append(newDiv); 
+      // let newDiv = $('<div>');
+      // newDiv.attr('class', 'card');
+      // newDiv.attr('id', dataPoint);
+      // alreadyAppended.push(dataPoint);
+      // dataPoint = data[dataPoint];
+      // let newUserName = $('<p>');
+      // newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName} says: `)
+      // newUserName.attr('class', 'chat-title');
+      // let messageDiv = $('<p>');
+      // messageDiv.attr('card-body');
+      // messageDiv.text(`${dataPoint.message}`);
+      // newUserName.append(messageDiv);
+      // newDiv.append(newUserName);
+      // $('#message-board').append(newDiv);
     }
   }
   return alreadyAppended;

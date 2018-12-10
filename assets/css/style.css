@@ -2,13 +2,47 @@ body {
   background-image: url(../images/skyline-bg.jpg);
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-family: 'Monaco', Arial, Helvetica, sans-serif!important;
+  display: inline-block;
+}
+
+.first, h1 {
+  margin-top: 10px;
+}
+
+h1::after {
+  content: "";
+  top: 0;
+  display: inline-block;
+  background-color: white;
+  opacity: 0.8;
+  width: 15px;
+  height: 32px;
+  -webkit-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {opacity: 1.0;}
+  50% {opacity: 0.0;}
+  100% {opacity: 1.0;}
+}
+
+@keyframes blink {
+  0% {opacity: 1.0;}
+  50% {opacity: 0.0;}
+  100% {opacity: 1.0;}
 }
 
 #query-feed, #feed-container {
   min-height: 500px;
 }
 
-.header, label, #feed-placeholder {
+.header, label, #feed-placeholder, #chat-header {
   color: white;
 }
 
@@ -42,7 +76,11 @@ body {
   border-radius: 10px;
 }
 
-button:hover {
+#chat-header {
+  padding-bottom: 5px;
+}
+
+button:hover, input:hover, textarea:hover {
   background-color: lightgoldenrodyellow!important;
   border-color: lightgoldenrodyellow!important;
   color: black!important;
@@ -56,13 +94,37 @@ button:hover {
   background: rgba(173, 173, 133, 0.6);
 }
 
+#form-container {
+  padding-left: 75px;
+}
+
+#message-container {
+  border-style: solid;
+  border-color: rgba(92, 92, 61, 0.6)!important;
+  border-width: 5px;
+  border-radius: 5px;
+}
+
 #message-board {
   height: 450px;
   width: 550px;
-  padding: 10px;
-  /* float: left; */
-  margin: auto;
   overflow: scroll;
+}
+
+#message-board, .chat-log {
+  padding-top: 10px;
+}
+
+.chat-log {
+  padding-left: 10px;
+  color: white;
+  background: rgba(173, 173, 133, 0.8)!important;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.chat-log, label, .mission, #chat-header {
+  text-shadow: 1px 1px 2px black;
 }
 
 /* These displays need to be separate because they are manipulated seperately */
@@ -84,7 +146,6 @@ button:hover {
 
 .loader {
   /* display: none; */
-  margin: auto;
   margin-top: 25px;
   /* margin-bottom: 25px; */
   border: 15px solid #f3f3f3;
@@ -93,6 +154,10 @@ button:hover {
   width: 100px;
   height: 100px;
   animation: spin 1s linear infinite;
+}
+
+.card-footer, .loader, #chat-container, #chat-header {
+  margin: auto;
 }
 
 @keyframes spin {
