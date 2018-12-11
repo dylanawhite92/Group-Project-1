@@ -19,7 +19,7 @@ function writeMessage(id, firstName, lastName, message) {
   firebase.database().ref('/message/' + id).push({
    'firstName': firstName,
     'lastName': lastName,
-    'message': message,
+    'message': message
   });
 }
 
@@ -62,17 +62,6 @@ $(document).ready(function(){
 
         $('#message-board').append(newDiv);      
       }
-
-        
-        // let newUserName = $('<p>');
-        // newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName} says: `)
-        // newUserName.attr('class', 'chat-title');
-        // let messageDiv = $('<p>');
-        // messageDiv.attr('card-body');
-        // messageDiv.text(`${dataPoint.message}`);
-        // newUserName.append(messageDiv);
-        // newDiv.append(newUserName);
-        // $('#message-board').append(newDiv);      }
     }
   });
 
@@ -84,7 +73,7 @@ $(document).ready(function(){
 
     let first = $('#firstNameInput').val().trim();
     let last = $('#lastNameInput').val().trim();
-    let description = $('#message').val().trim();;
+    let description = $('#message').val().trim();
 
     if (first && last && description) {
       writeMessage(value, $('#firstNameInput').val(), $("#lastNameInput").val(), $("#message").val());
@@ -116,12 +105,15 @@ function appendData (data, alreadyAppended) {
   let i = 0;
   for (let dataPoint in data){
     console.log(dataPoint);
-    console.log(alreadyAppended[i]);
+    // console.log(alreadyAppended[i]);
     if (alreadyAppended[i] === dataPoint) {
       i++;
     } else {
       i++;
       let newDiv = $('<div>');
+      let time = firebase.database.ServerValue.TIMESTAMP;
+      let dateAdded = moment(time).format('MMMM do YYYY, h:mm:ss a');
+      console.log(dateAdded);
 
       newDiv.attr('class', 'chat-log');
       newDiv.attr('id', dataPoint);
@@ -129,23 +121,9 @@ function appendData (data, alreadyAppended) {
       alreadyAppended.push(dataPoint);
       dataPoint = data[dataPoint];
       
-      $(newDiv).append(`<p class='chat-title'>${dataPoint.firstName} ${dataPoint.lastName} says: ${dataPoint.message}`);
+      $(newDiv).append(`<p class='chat-title'>${dataPoint.firstName} ${dataPoint.lastName} says: ${dataPoint.message}<br>${dateAdded}`);
 
       $('#message-board').append(newDiv); 
-      // let newDiv = $('<div>');
-      // newDiv.attr('class', 'card');
-      // newDiv.attr('id', dataPoint);
-      // alreadyAppended.push(dataPoint);
-      // dataPoint = data[dataPoint];
-      // let newUserName = $('<p>');
-      // newUserName.text(`${dataPoint.firstName} ${dataPoint.lastName} says: `)
-      // newUserName.attr('class', 'chat-title');
-      // let messageDiv = $('<p>');
-      // messageDiv.attr('card-body');
-      // messageDiv.text(`${dataPoint.message}`);
-      // newUserName.append(messageDiv);
-      // newDiv.append(newUserName);
-      // $('#message-board').append(newDiv);
     }
   }
   return alreadyAppended;

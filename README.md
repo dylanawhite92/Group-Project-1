@@ -64,8 +64,6 @@ Be sure to set up your own [Firebase](https://console.firebase.google.com/u/0/) 
 * Move out of firebase server and into Node.js/mySQL server.
 * Improve UX for user clarity.
 * Add mailboxlayer API to check for valid email addresses.
-* Chatbox, beautify formatting.
-* Use Moment.js to add timestamps to chat messages?
 * Change badges in queryPage to be two badges, one to say submit a message and the other to collapse the divs in query listings for easier scrollability, particularly jobs/events.
 * Add more parameters to query listings for more descriptive listings, e.g. Employer Name, Location.
 * Check out Chicago's open data sets, see how they can be integrated.
