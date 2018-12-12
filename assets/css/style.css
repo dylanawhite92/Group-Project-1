@@ -13,7 +13,7 @@ body {
 }
 
 .formValidation {
-  color: palegoldenrod;
+  color: rgb(204, 204, 0);
   text-shadow: 2px 2px 4px black;
 }
 
@@ -22,14 +22,34 @@ body {
 }
 
 .btn-primary {
-  background: rgba(173, 173, 133, 0.8);
-  border-color: rgb(173, 173, 133);
+  background: rgba(173, 173, 133, 0.8)!important;
+  border-color: rgb(173, 173, 133)!important;
+}
+
+.btn-dark {
+  background: rgb(92, 92, 61)!important;
+}
+
+.active {
+  background: rgb(46, 46, 31)!important;
+}
+
+.nav-link:hover {
+  background: rgba(46, 46, 31, .4)!important;
+}
+
+.nav-item {
+  border-radius: 10px;
 }
 
 button:hover {
   background-color: lightgoldenrodyellow!important;
   border-color: lightgoldenrodyellow!important;
   color: black!important;
+}
+
+.btn-group-toggle label:hover {
+  background: rgba(92, 92, 61, .4)!important;
 }
 
 .container{
@@ -78,6 +98,11 @@ ul {
 
 ul > * {
   max-width: 100%;
+}
+
+li {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 footer {

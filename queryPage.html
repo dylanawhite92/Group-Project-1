@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="icon" href="assets/images/favicon.png" type="image/gif" sizes="128x128">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
   <!-- Navigation -->
@@ -36,22 +37,17 @@
           <a class="nav-link" href="messageSubmit.html">Message Submission</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-text">
-        <button class="btn btn-success my-2 my-sm-0" type="submit" id="search-submit-button">Search</button>
-      </form>
     </div>
   </nav>
 
   <!-- Heading Row -->
-  <div class = "container pb-3">
+  <div class = "container">
     
     <!-- Radio Button Container -->
     <div class="card text-white bg-primary my-4 text-center" id = "toggle-container">
       <div class="card-body">
         <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-dark active category" data-id="job">
                 <input type="radio" name="options" id="job-check" autocomplete="off" checked> Jobs
@@ -64,7 +60,12 @@
               </label>
             </div>
           </div>
-          <div class="col-md-4"></div>
+          <div class="col-md-6">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-text">
+              <button class="btn btn-dark my-2 my-sm-0" type="submit" id="search-submit-button"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

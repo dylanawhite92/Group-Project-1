@@ -11,7 +11,7 @@ function renderScreen(data, type) {
   // console.log(data);
 
   $("#query-feed").css("display", "none");
-  $("#loader-container").fadeIn().delay(800).fadeOut("fast");
+  $("#loader-container").fadeIn().delay(1800).fadeOut("fast");
 
   let listToChange;
 
@@ -71,7 +71,7 @@ function renderScreen(data, type) {
     $(listToChange).append(newMediaObject)
   }
 
-  $("#query-feed").delay(1400).fadeIn();
+  $("#query-feed").delay(2400).fadeIn();
 };
 
 $(document).ready(function () {
