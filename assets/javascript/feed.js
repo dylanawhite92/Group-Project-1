@@ -32,14 +32,15 @@ function renderScreen(data, type) {
     var newSpan = $("<span>").addClass("badge badge-pill");
     var newImage = $("<img>").addClass("mr-3");
     var newDiv = $("<div>").addClass("media-body");
+    var messageButton = $("<button>").addClass("btn btn-light message");
     var divHeader = $("<h5>").addClass("mt-0 mt-1");
     let textDisplay;
     let header;
   
     newMediaObject.append(newSpan, newImage, newDiv, divHeader);
 
-    if (type === 'job') {
-      newSpan.attr('data-id', data[i].id);
+    if (type === `job`) {
+      messageButton.attr('data-id', data[i].id);
       newSpan.addClass("badge-primary");
       newSpan.text("Job");
       divHeader.prepend(newSpan);
@@ -47,6 +48,7 @@ function renderScreen(data, type) {
       header = data[i].title;
     } 
     else if (type === 'education') {
+      messageButton.attr('data-id', data[i].id);
       newSpan.addClass("badge-success");
       newSpan.text("Education");
       divHeader.prepend(newSpan);
@@ -54,7 +56,7 @@ function renderScreen(data, type) {
       header = data[i].description;
     } 
     else {
-      // console.log(data[i]);
+      messageButton.attr('data-id', data[i].id);
       newSpan.addClass("badge-warning");
       newSpan.text("Event");
       divHeader.prepend(newSpan);
@@ -66,8 +68,9 @@ function renderScreen(data, type) {
       var divHeader = $("<h5>").addClass("mt-0 mt-1");
       divHeader.text(header);
       newDiv.prepend(divHeader);
+      messageButton.text("Message");
 
-    newMediaObject.append(newImage, newDiv);
+    newMediaObject.append(newImage, newDiv, messageButton);
     $(listToChange).append(newMediaObject)
   }
 
@@ -80,20 +83,26 @@ $(document).ready(function () {
   let eventData = [];
   let educationData = [];
 
+  // this is so the search button works with the category functionality
+  $('#search-submit-button').attr('data-id', 'job');
+
   $(".category").on("click", function(event) {
 
     if ($(this).attr('data-id') === "job") {
       renderScreen(jobData, 'job');
+      $('#search-submit-button').attr('data-id', 'job');
     }
     else if ($(this).attr('data-id') === "education") {
       renderScreen(educationData, 'education');
+      $('#search-submit-button').attr('data-id', 'education');
     }
     else if ($(this).attr('data-id') === "event") {
       renderScreen(eventData, 'event');
+      $('#search-submit-button').attr('data-id', 'event');
     }
   });
 
-  $(document).on('click', '.badge', function(event){
+  $(document).on('click', '.message', function(event){
     createSessionStorageData('id', $(this).data('id'),);
   });
 
